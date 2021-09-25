@@ -1,0 +1,25 @@
+:root {
+
+}
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+header,
+main,
+section,
+footer {
+  border: 1px solid red;
+}
+
+.section {
+  padding: 75px 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+}
