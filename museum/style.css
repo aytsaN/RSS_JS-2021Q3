@@ -38,8 +38,8 @@ a {
   transition: 0.2s;
 }
 
-.page-header {
-  background-color: var(--bg-dark);
+a:hover {
+  cursor: pointer;
 }
 
 .container {
@@ -47,7 +47,7 @@ a {
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  height: 810px;
+  //min-height: 810px;
 }
 
 .section {
@@ -79,12 +79,20 @@ a {
 .underline-title {
   padding-bottom: 25px;
   border-bottom: 3px solid var(--dark-red);
+  margin-bottom: 75px;
+}
+
+.page-header {
+  background-color: var(--bg-dark);
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  max-width: 1440px;
+  width: 100%;
   height: 150px;
   color: var(--font-white);
 }
@@ -153,6 +161,7 @@ a {
 .welcome-section .container {
   position: relative;
   justify-content: flex-end;
+  min-height: 810px;
 }
 
 .welcome-content {
@@ -286,7 +295,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-top: 75px;
   gap: 75px 10px;
 }
 
@@ -321,7 +329,7 @@ a {
 }
 
 .virtual-tour-text {
-  padding-top: 15px;
+  padding-top: 17px;
   font-weight: var(--font-thin);
   font-size: var(--font4);
 }
@@ -330,4 +338,43 @@ a {
   padding-top: 10px;
   font-weight: var(--font-thin);
   font-size: var(--font5);
+}
+
+/* TODO: iframe
+  при кликам по кнопке Discover the Louvre и
+  карточкам секции Visiting открываются полноэкранные
+  панорамы Google Street View встроенные в
+  страницы вашего сайта при помощи iframe +5 */
+
+/* Explore section */
+.explore-section {
+  padding: ;
+}
+
+.explore-text {
+  padding-bottom: 25px;
+  font-weight: var(--font-light);
+  font-size: var(--font4);
+  line-height: 38px;
+}
+
+.yellow-text {
+  color: #caaa79;
+}
+
+.explore-slider {
+  position: relative;
+  padding-top: 15px;
+  padding-left: 60px;
+}
+
+.explore-img.before {position: absolute;
+  clip-path: inset(0 39% 0 0);
+}
+
+.explore-slider::after {
+  content: url("assets/svg/explore-slider.svg");
+  position: absolute;
+  right: 33%;
+  cursor: pointer;
 }
