@@ -48,25 +48,45 @@ footer {
 .page-header {
   background-color: var(--bg-dark);
 }
+
 .container {
+  display: flex;
   margin: 0 auto;
   max-width: 1440px;
+  width: 100%;
+  height: 810px;
 }
+
 .section {
   padding: 75px 0;
 }
+
+.dark-section {
+  background-color: var(--bg-dark);
+  color: var(--font-white);
+}
+
+.section-title {
+  font-family: var(--font-family2);
+  font-size: var(--font1);
+  font-weight: var(--font-regular);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 150px;
-
   color: var(--font-white);
 }
+
 .logo {
   display: inline-flex;
   align-items: baseline;
 }
+
 .logo-img {
   width: 50px;
   height: 30px;
@@ -75,28 +95,34 @@ footer {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-.logo-txt {
+
+.logo-text {
   padding-left: 25px;
   font-family: var(--font-family2);
   font-size: var(--font3);
+  font-weight: var(--font-regular);
   letter-spacing: 5px;
   text-transform: uppercase;
 }
+
 .header-navigation {
   max-width: 775px;
   width: 100%;
   height: 100%;
 }
+
 .nav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: inherit;
 }
+
 .nav-list-item {
   display: flex;
   align-items: center;
 }
+
 .nav-item-link {
   padding: 50% 0;
   font-size: var(--font4);
@@ -104,9 +130,70 @@ footer {
   letter-spacing: 2px;
   color: var(--font-white);
 }
+
 .nav-item-link:hover {
   color: var(--font-gold);
 }
+
 .nav-item-link:active {
   color: var(--font-link-active);
+}
+
+/* Welcome section */
+.welcome-section {
+  padding: 0;
+}
+
+.welcome-section .container {
+  position: relative;
+  justify-content: flex-end;
+}
+
+.welcome-content {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  max-width: 600px;
+}
+
+.welcome-text {
+  margin-bottom: 75px;
+}
+
+.main-heading {
+  margin-bottom: 25px;
+}
+
+.slogan {
+  font-size: var(--font3);
+  font-weight: var(--font-light);
+  letter-spacing: 2px;
+}
+
+.btn-link {
+  display: inline-block;
+  padding: 25px 65px;
+  border-radius: 10px;
+  font-size: var(--font4);
+  font-weight: var(--font-light);
+  color: var(--font-white);
+  background-color: var(--dark-red);
+  letter-spacing: 2px;
+}
+
+.welcome-carousel {
+  width: 70%;
+
+}
+
+.welcome-carousel .item-container {
+  height: 100%;
+}
+
+.carousel-item {
+  height: inherit;
+  background-image: url("assets/img/welcome-slider/1.jpg");
+  background-position: top right;
+  background-repeat: no-repeat;
+  box-shadow: inset 300px 0px 200px -140px #000000;
 }
