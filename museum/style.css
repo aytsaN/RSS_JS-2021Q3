@@ -38,13 +38,6 @@ a {
   transition: 0.2s;
 }
 
-
-main,
-section,
-footer {
-  border: 1px solid red;
-}
-
 .page-header {
   background-color: var(--bg-dark);
 }
@@ -90,7 +83,6 @@ footer {
 .logo-img {
   width: 50px;
   height: 30px;
-
   background-image: url("assets/svg/logo.svg");
   background-repeat: no-repeat;
   background-position: bottom;
@@ -154,6 +146,7 @@ footer {
   top: 150px;
   left: 0;
   max-width: 600px;
+  z-index: 50;
 }
 
 .welcome-text {
@@ -181,7 +174,12 @@ footer {
   letter-spacing: 2px;
 }
 
+.btn-link:hover {
+  background-color: var(--font-gold);
+}
+
 .welcome-carousel {
+  position: relative;
   width: 70%;
 
 }
@@ -196,4 +194,73 @@ footer {
   background-position: top right;
   background-repeat: no-repeat;
   box-shadow: inset 300px 0px 200px -140px #000000;
+}
+
+.carousel-control {
+  position: absolute;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  height: 40px;
+  padding: 40px 75px;
+  background-color: var(--bg-dark);
+}
+
+.slide-num {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font4);
+}
+
+.slide-num .current {
+  padding: 0 10px;
+}
+
+.slide-num .total {
+  padding: 0 10px;
+}
+
+.slide-pagination {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 2;
+  padding: 0 40px;
+}
+
+.slide-pagination-item {
+  width: 16px;
+  height: 16px;
+  background-color: var(--font-white);
+  transition: 0.2s;
+}
+
+.slide-pagination-item:hover {
+  background-color: var(--font-gold);
+}
+
+.slide-pagination-item.active {
+  background-color: #d2b183;
+}
+
+.control-arrows {
+  display: flex;
+}
+
+.control {
+  padding: 0 10px;
+}
+
+.control svg path {
+  transition: 0.2s;
+}
+
+.control svg path:hover {
+  fill: var(--font-gold);
+}
+
+.arrow-right {
+  transform: rotate(180deg);
 }
