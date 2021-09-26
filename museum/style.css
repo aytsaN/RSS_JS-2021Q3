@@ -298,6 +298,10 @@ a:hover {
   gap: 75px 10px;
 }
 
+.visiting-item {
+  color: #000000;
+}
+
 .visiting-item:hover {
   cursor: pointer;
 }
