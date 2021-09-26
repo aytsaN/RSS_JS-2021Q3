@@ -290,6 +290,10 @@ a {
   gap: 75px 10px;
 }
 
+.visiting-item:hover {
+  cursor: pointer;
+}
+
 .underline-subtitle {
   position: relative;
   padding-top: 25px;
@@ -309,6 +313,11 @@ a {
   height: 2px;
   width: 68%;
   background-color: var(--dark-red);
+  transition: 0.5s;
+}
+
+.visiting-item:hover .underline-subtitle::after {
+  width: 100%;
 }
 
 .virtual-tour-text {
