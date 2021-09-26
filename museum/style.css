@@ -54,17 +54,31 @@ a {
   padding: 75px 0;
 }
 
+.column-section {
+  flex-direction: column;
+}
+
 .dark-section {
   background-color: var(--bg-dark);
   color: var(--font-white);
 }
 
 .section-title {
+  width: 100%;
   font-family: var(--font-family2);
   font-size: var(--font1);
   font-weight: var(--font-regular);
   text-transform: uppercase;
   letter-spacing: 5px;
+}
+
+.gold-title {
+  color: var(--font-gold);
+}
+
+.underline-title {
+  padding-bottom: 25px;
+  border-bottom: 3px solid var(--dark-red);
 }
 
 .header-container {
@@ -257,10 +271,54 @@ a {
   transition: 0.2s;
 }
 
+/* TODO: increase hover area */
+
 .control svg path:hover {
   fill: var(--font-gold);
 }
 
 .arrow-right {
   transform: rotate(180deg);
+}
+
+/* Visiting section */
+.visiting-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 75px;
+  gap: 75px 10px;
+}
+
+.underline-subtitle {
+  position: relative;
+  padding-top: 25px;
+  font-family: var(--font-family2);
+  font-weight: var(--font-regular);
+  font-size: var(--font2);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.underline-subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 68%;
+  background-color: var(--dark-red);
+}
+
+.virtual-tour-text {
+  padding-top: 15px;
+  font-weight: var(--font-thin);
+  font-size: var(--font4);
+}
+
+.google-view-text {
+  padding-top: 10px;
+  font-weight: var(--font-thin);
+  font-size: var(--font5);
 }
