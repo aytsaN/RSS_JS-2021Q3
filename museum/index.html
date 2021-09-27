@@ -7,7 +7,7 @@
   <title>Document</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -248,7 +248,52 @@
       </div>
     </section>
     <section class="section" id="tickets">
-      <div class="container"></div>
+      <div class="container column-container">
+        <h2 class="section-title underline-title gold-title">Buy tickets</h2>
+        <div class="tickets-content">
+          <img src="assets/img/tickets-section.png" alt="picture" height="550">
+          <form action="#" class="tickets-form">
+            <fieldset class="fieldset type">
+              <h5 class="fieldset-title">Ticket Type</h5>
+              <div class="inputs">
+                <div class="row">
+                  <input type="radio" id="option1" name="type" value="Permanent">
+                  <label for="option1">Permanent exhibition</label>
+                </div>
+                <div class="row">
+                  <input type="radio" id="option2" name="type" value="Temporary">
+                  <label for="option2">Temporary exhibition</label>
+                </div>
+                <div class="row">
+                  <input type="radio" id="option3" name="type" value="Combined">
+                  <label for="option3">Combined Admission</label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="fieldset amount">
+              <h5 class="fieldset-title">Amount</h5>
+              <div class="amount-item">
+                <label for="basic">Basic 18+</label>
+                <div class="input-number-container">
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&minus;</button>
+                  <input type="number" min="0" max="20" value="1" readonly="readonly" class="number" id="basic">
+                  <button type="button" onclick="this.previousElementSibling.stepUp()">&#x2b;</button>
+                </div>
+              </div>
+              <div class="amount-item">
+                <label for="basic">Senior 65+</label>
+                <div class="input-number-container">
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&minus;</button>
+                  <input type="number" min="0" max="20" value="1" readonly="readonly" class="number" id="basic">
+                  <button type="button" onclick="this.previousElementSibling.stepUp()">&#x2b;</button>
+                </div>
+              </div>
+              <p class="total">Total &nbsp; €<span class="amount-sum">220</span></p>
+              <button class="order-button" type="submit"><span>Buy Now</span></button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </section>
     <section class="section" id="contacts">
       <div class="container"></div>

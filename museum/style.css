@@ -47,7 +47,6 @@ a:hover {
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  //min-height: 810px;
 }
 
 .section {
@@ -565,3 +564,154 @@ a:hover {
   margin-bottom: 24px;
 }
 
+/* Tickets section */
+.tickets-content {
+  display: flex;
+  gap: 60px;
+}
+
+.tickets-form {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 50%;
+}
+
+.fieldset-title,
+.tickets-form .total {
+  font-weight: 700;
+  font-size: var(--font3);
+}
+
+.type .fieldset-title {
+  padding-bottom: 50px;
+}
+
+.amount .fieldset-title {
+  padding-bottom: 25px;
+}
+
+.tickets-content .fieldset .inputs .row {
+  padding-bottom: 25px;
+  font-weight: var(--font-light);
+  font-size: var(--font4);
+}
+
+.tickets-content .inputs label {
+  padding-left: 23px;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+}
+
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #000000;
+    border-radius: 100%;
+    background: #ffffff;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: #000000;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+}
+
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.amount-item {
+  margin-bottom: 13px;
+  font-weight: var(--font-light);
+  font-size: var(--font4);
+}
+
+.amount-item label {
+  display: block;
+  padding-bottom: 15px;
+}
+
+.input-number-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 14px;
+  width: 115px;
+  height: 35px;
+  border: 3px solid #000000;
+}
+
+.input-number-container input {
+  font-weight: var(--font-light);
+  font-size: var(--font4);
+  width: 40px;
+  padding: 5px 0;
+  text-align: right;
+}
+
+.input-number-container button {
+  font-weight: var(--font-light);
+  font-size: 32px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.amount .total {
+  margin-top: 35px;
+  margin-bottom: 60px;
+}
+
+.order-button {
+  height: 50px;
+  width: 175px;
+  font-size: 22px;
+  border-radius: 2px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.order-button span{
+  font-weight: 200 !important;
+}
+
+.order-button:hover {
+  background-color: var(--font-gold);
+  color: #000000;
+}
