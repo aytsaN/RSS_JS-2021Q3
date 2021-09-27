@@ -714,4 +714,14 @@ a:hover {
 .order-button:hover {
   background-color: var(--font-gold);
   color: #000000;
+  cursor: pointer;
+}
+
+/* Parallax */
+.parallax {
+  width: 100%;
+  background: center url("assets/img/parallax.jpg") no-repeat;
+  height: 400px;
+  background-attachment: fixed;
+  background-size: cover;
 }
