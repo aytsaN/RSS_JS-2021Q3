@@ -417,7 +417,13 @@ a:hover {
   top: 35%;
   left: 42%;
   z-index: 50;
+  opacity: .5;
   cursor: pointer;
+  transition: .2s;
+}
+
+.playback-animation:hover {
+  opacity: 1;
 }
 
 .video-controls {
@@ -432,13 +438,14 @@ a:hover {
   transition: all .2s ease;
 }
 
-.video-controls svg {
-  cursor: pointer;
-}
-
 .video-controls button {
   cursor: pointer;
   background-color: transparent;
+  transition: .1s;
+}
+
+.video-controls button:hover {
+  opacity: .5;
 }
 
 .video-controls button * {
