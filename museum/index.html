@@ -25,7 +25,7 @@
         <ul class="nav-list">
           <li class="nav-list-item"><a href="#visiting" class="nav-item-link">Visiting</a></li>
           <li class="nav-list-item"><a href="#explore" class="nav-item-link">Explore</a></li>
-          <li class="nav-list-item"><a href="#video" class="nav-item-link">Video</a></li>
+          <li class="nav-list-item"><a href="#videoSection" class="nav-item-link">Video</a></li>
           <li class="nav-list-item"><a href="#gallery" class="nav-item-link">Gallery</a></li>
           <li class="nav-list-item"><a href="#tickets" class="nav-item-link">Tickets</a></li>
           <li class="nav-list-item"><a href="#contacts" class="nav-item-link">Contacts</a></li>
@@ -169,7 +169,7 @@
         </div>
       </div>
     </section>
-    <section class="section" id="video">
+    <section class="section" id="videoSection">
       <div class="container column-container">
         <div class="video-text">
           <h2 class="section-title video-title gold-title">Video journey</h2>
@@ -178,33 +178,30 @@
           </p>
         </div>
         <div class="video-container">
-          <video class="video" id="video" preload="metadata" poster="assets/video/poster0.jpg">
+          <video class="video" id="video" controls preload="metadata" poster="assets/video/poster0.jpg" width="100%">
             <source src="assets/video/video0.mp4" type="video/mp4"></source>
           </video>
           <div class="video-controls hidden">
             <button data-title="Play (k)" id="play">
-              <svg class="playback-icons">
-                <use href="#play-icon"></use>
-                <use class="hidden" href="#pause"></use>
+              <svg class="playback-icons" width="23" height="30">
+                <use href="assets/svg/controls.svg#play-icon"></use>
+                <use class="hidden" href="assets/svg/controls.svg#pause"></use>
               </svg>
             </button>
-            <input type="range" value="0" min="0" max="100" step="1" class="video-progress">
+            <input type="range" value="40" min="0" max="100" step="1" class="progress">
             <div class="volume-controls">
               <button data-title="Mute (m)" class="volume-button" id="volume-button">
-                <svg>
-                  <use class="hidden" href="#volume-mute"></use>
-                  <use class="hidden" href="#volume-low"></use>
-                  <use href="#volume-high"></use>
+                <svg width="36" height="30">
+                  <use class="hidden" href="assets/svg/controls.svg#volume-mute"></use>
+                  <use href="assets/svg/controls.svg#volume-high"></use>
                 </svg>
               </button>
-
-              <input class="volume" id="volume" value="1"
-              data-mute="0.5" type="range" max="1" min="0" step="0.01">
+              <input class="volume" id="volume" value="40" type="range" max="100" min="0" step="1">
             </div>
             <button data-title="Full screen (f)" class="fullscreen-button" id="fullscreen-button">
-              <svg>
-                <use href="#fullscreen"></use>
-                <use href="#fullscreen-exit" class="hidden"></use>
+              <svg width="36" height="36">
+                <use href="assets/svg/controls.svg#fullscreen"></use>
+                <use href="assets/svg/controls.svg#fullscreen-exit" class="hidden"></use>
               </svg>
             </button>
           </div>
