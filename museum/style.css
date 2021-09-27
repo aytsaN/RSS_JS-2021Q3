@@ -484,3 +484,48 @@ a:hover {
   cursor: pointer;
   background: #ffffff;
 }
+
+.video-slider {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.video-slider-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-slider-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  align-self: center;
+  padding-top: 35px;
+  width: 200px;
+}
+
+.video-slider-control .arrow svg {
+  fill: #999999;
+}
+
+.video-slider-control .arrow.right {
+  transform: rotate(180deg);
+}
+
+.video-slider-control .arrow:hover svg {
+  fill: var(--dark-red);
+  cursor: pointer;
+}
+
+.video-slider-control .dot:hover {
+  background-color: var(--dark-red);
+  cursor: pointer;
+}
+
+.video-slider-control .dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #999999;
+}
