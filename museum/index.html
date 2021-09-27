@@ -83,7 +83,7 @@
       </div>
     </section>
     <section class="section" id="visiting">
-      <div class="container column-section">
+      <div class="container column-container">
         <h2 class="section-title underline-title gold-title">Virtual tour</h2>
         <div class="visiting-content">
           <a href="" class="visiting-item">
@@ -170,7 +170,48 @@
       </div>
     </section>
     <section class="section" id="video">
-      <div class="container"></div>
+      <div class="container column-container">
+        <div class="video-text">
+          <h2 class="section-title video-title gold-title">Video journey</h2>
+          <p class="video-desc">
+            Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code
+          </p>
+        </div>
+        <div class="video-container">
+          <video class="video" id="video" preload="metadata" poster="assets/video/poster0.jpg">
+            <source src="assets/video/video0.mp4" type="video/mp4"></source>
+          </video>
+          <div class="video-controls hidden">
+            <button data-title="Play (k)" id="play">
+              <svg class="playback-icons">
+                <use href="#play-icon"></use>
+                <use class="hidden" href="#pause"></use>
+              </svg>
+            </button>
+            <input type="range" value="0" min="0" max="100" step="1" class="video-progress">
+            <div class="volume-controls">
+              <button data-title="Mute (m)" class="volume-button" id="volume-button">
+                <svg>
+                  <use class="hidden" href="#volume-mute"></use>
+                  <use class="hidden" href="#volume-low"></use>
+                  <use href="#volume-high"></use>
+                </svg>
+              </button>
+
+              <input class="volume" id="volume" value="1"
+              data-mute="0.5" type="range" max="1" min="0" step="0.01">
+            </div>
+            <button data-title="Full screen (f)" class="fullscreen-button" id="fullscreen-button">
+              <svg>
+                <use href="#fullscreen"></use>
+                <use href="#fullscreen-exit" class="hidden"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="video-slider"></div>
+      </div>
     </section>
     <section class="section" id="gallery">
       <div class="container"></div>
@@ -185,5 +226,6 @@
   <footer class="page-footer" id="pageFooter">
     <div class="container"></div>
   </footer>
+  <script src="js/index.js"></script>
 </body>
 </html>

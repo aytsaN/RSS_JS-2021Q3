@@ -54,7 +54,7 @@ a:hover {
   padding: 75px 0;
 }
 
-.column-section {
+.column-container {
   flex-direction: column;
 }
 
@@ -137,6 +137,7 @@ a:hover {
   align-items: center;
 }
 
+/* TODO: link paddings to one size */
 .nav-item-link {
   padding: 50% 0;
   font-size: var(--font4);
@@ -382,3 +383,21 @@ a:hover {
   right: 33%;
   cursor: pointer;
 }
+
+/* Video section */
+.video-text {
+  display: flex;
+  align-items: center;
+}
+
+.video-title {
+  flex-basis: 85%;
+}
+
+.video-desc {
+  font-weight: var(--font-light);
+  font-size: var(--font4);
+  line-height: 38px;
+}
+
+
