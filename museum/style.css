@@ -529,6 +529,10 @@ a:hover {
   background-color: #999999;
 }
 
+.video-slider-control .dot.active {
+  background-color: #333333;
+}
+
 /* Gallery section */
 .gallery-section {
   padding-bottom: 0;
@@ -540,7 +544,7 @@ a:hover {
 
 .picture-container {
   position: relative;
-  max-height: 1955px;
+  max-height: 1960px;
   overflow-y: hidden;
 }
 
@@ -724,4 +728,37 @@ a:hover {
   height: 400px;
   background-attachment: fixed;
   background-size: cover;
+}
+
+/* Contacts section */
+.contacts-content {
+  display: flex;
+  justify-content: space-between;
+  max-height: 810px;
+}
+
+.address-name {
+  padding-bottom: 50px;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.address {
+  font-weight: var(--font-light);
+  font-size: 22px;
+  font-style: normal;
+}
+
+.address a {
+  color: #000000;
+}
+
+.address > * {
+  padding-bottom: 25px;
+}
+
+.map {
+  height: 620px;
+  width: 960px;
+  background-image: url("assets/img/map.png");
 }
