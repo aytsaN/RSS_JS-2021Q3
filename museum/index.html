@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="assets/favicon.ico">
 </head>
@@ -80,6 +80,7 @@
               </svg>
             </div>
           </div>
+        </div>
       </div>
       </div>
     </section>
@@ -179,14 +180,14 @@
           </p>
         </div>
         <div class="video-container">
-          <div class="playback-animation" id="playback-animation"  width="220" height="220">
+          <div class="playback-animation" id="playback-animation">
             <svg class="big-playback-icons"  width="220" height="220">
               <use href="assets/svg/big-play.svg#pig-play-icon"></use>
               <use class="hidden" href=""></use>
             </svg>
           </div>
-          <video class="video" id="video" controls preload="metadata" poster="assets/video/poster0.jpg" width="100%">
-            <source src="assets/video/video0.mp4" type="video/mp4"></source>
+          <video class="video" id="video" controls preload="metadata" poster="assets/video/poster0.jpg">
+            <source src="assets/video/video0.mp4" type="video/mp4">
           </video>
           <div class="video-controls hidden">
             <button data-title="Play (k)" id="play">
@@ -282,10 +283,10 @@
                 </div>
               </div>
               <div class="amount-item">
-                <label for="basic">Senior 65+</label>
+                <label for="senior">Senior 65+</label>
                 <div class="input-number-container">
                   <button type="button" onclick="this.nextElementSibling.stepDown()">&minus;</button>
-                  <input type="number" min="0" max="20" value="1" readonly="readonly" class="number" id="basic">
+                  <input type="number" min="0" max="20" value="1" readonly="readonly" class="number" id="senior">
                   <button type="button" onclick="this.previousElementSibling.stepUp()">&#x2b;</button>
                 </div>
               </div>
@@ -322,19 +323,23 @@
           <div class="logo-text">Louvre</div>
         </div>
         <nav class="footer-navigation">
-          <li class="nav-item footer-nav-item"><a href="#visiting">Visiting</a></li>
-          <li class="nav-item footer-nav-item"><a href="#explore">Explore</a></li>
-          <li class="nav-item footer-nav-item"><a href="#videoSection">Video</a></li>
-          <li class="nav-item footer-nav-item"><a href="#gallery">Gallery</a></li>
-          <li class="nav-item footer-nav-item"><a href="#tickets">Tickets</a></li>
-          <li class="nav-item footer-nav-item"><a href="#contacts">Contacts</a></li>
+          <ul>
+            <li class="nav-item footer-nav-item"><a href="#visiting">Visiting</a></li>
+            <li class="nav-item footer-nav-item"><a href="#explore">Explore</a></li>
+            <li class="nav-item footer-nav-item"><a href="#videoSection">Video</a></li>
+            <li class="nav-item footer-nav-item"><a href="#gallery">Gallery</a></li>
+            <li class="nav-item footer-nav-item"><a href="#tickets">Tickets</a></li>
+            <li class="nav-item footer-nav-item"><a href="#contacts">Contacts</a></li>
+          </ul>
         </nav>
         <div class="social">
-          <div class="social-item"><a href=""><i class="fab fa-youtube"></i></a></div>
-          <div class="social-item"><a href=""><i class="fab fa-instagram"></i></a></div>
-          <div class="social-item"><a href=""><i class="fab fa-facebook-f"></i></a></i></div>
-          <div class="social-item"><a href=""><i class="fab fa-twitter"></i></a></div>
-          <div class="social-item"><a href=""><i class="fab fa-pinterest"></i></a></div>
+          <ul>
+            <li class="social-item"><a href=""><i class="fab fa-youtube"></i></a></li>
+            <li class="social-item"><a href=""><i class="fab fa-instagram"></i></a></li>
+            <li class="social-item"><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li class="social-item"><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li class="social-item"><a href=""><i class="fab fa-pinterest"></i></a></li>
+          </ul>
         </div>
       </div>
       <div class="copyright">
@@ -391,7 +396,7 @@
             </div>
             <div class="col2">
               <div class="overview">
-                <h3>Overview</h3>
+                <h4>Overview</h4>
                 <p>Tour to Louvre</p>
                 <img src="assets/img/popup/louvre.png" alt="louvre" width="150" height="120">
                 <ul>
@@ -417,10 +422,10 @@
                   <label>Card number<br>
                     <input type="text" maxlength="16" id="cardNumber">
                   </label>
-                  <label class="expiration">Expiration date<br>
+                  <p class="expiration">Expiration date<br>
                     <input type="number" min="1" max="12" id="cardMonth">
                     <input type="number" min="2021" max="2040" step="1" id="cardYear">
-                  </label>
+                  </p>
                   <label>Cardholder name
                     <input type="text" maxlength="50" id="cardName">
                   </label>
@@ -428,10 +433,10 @@
               </div>
               <div class="card-back">
                 <div class="blackline"></div>
-                <label class="cvc-cvv">&#8195;CVC/CVV<br>
+                <div class="cvc-cvv">&#8195;CVC/CVV<br>
                   <input type="text" maxlength="4" id="cvc">
                   <p>The last<br>3 or 4 digits<br>on back<br>of the card</p>
-                </label>
+                </div>
               </div>
             </div>
             <button class="book-btn ripple">Book</button>

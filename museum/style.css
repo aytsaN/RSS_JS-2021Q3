@@ -398,6 +398,10 @@ button:focus {
 }
 
 /* Video section */
+#video {
+  width: 100%;
+}
+
 .video-text {
   display: flex;
   align-items: center;
@@ -589,6 +593,11 @@ button:focus {
 .tickets-content {
   display: flex;
   gap: 60px;
+}
+
+.tickets-content img {
+  width: 50%;
+  height: 50%;
 }
 
 .tickets-form {
@@ -810,10 +819,14 @@ button:focus {
 
 .footer-navigation {
   flex: 1;
+  max-height: 135px;
+}
+
+.footer-navigation ul {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 135px;
-  column-gap: 40%;
+  column-gap: 160%;
   row-gap: 25px;
 }
 
@@ -821,6 +834,10 @@ button:focus {
   flex: 2;
   display: flex;
   justify-content: flex-end;
+}
+
+.social ul {
+  display: flex;
 }
 
 .social-item {
@@ -1094,7 +1111,7 @@ button:focus {
   position: relative;
 }
 
-.overview h3 {
+.overview h4 {
   font-weight: 500;
   font-size: 32px;
   color: #030303;
