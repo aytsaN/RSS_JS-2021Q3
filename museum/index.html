@@ -290,7 +290,7 @@
                 </div>
               </div>
               <p class="total">Total &nbsp; €<span class="amount-sum">220</span></p>
-              <button class="order-button" type="submit"><span>Buy Now</span></button>
+              <a class="order-button" href="#orderPopup">Buy Now</a>
             </fieldset>
           </form>
         </div>
@@ -344,6 +344,102 @@
       </div>
     </div>
   </footer>
+  <div class="order-popup" id="orderPopup">
+    <div class="popup-container">
+      <a href="#tickets" class="overlay"></a>
+      <div class="popup-wrapper">
+        <a href="#tickets" class="popup-close"><img src="assets/svg/popup/close.svg" width="25" height="25" alt="close"></a>
+        <div class="popup-content">
+          <div class="col1">
+            <div class="popup-text">
+              <h2 class="popup-title section-title gold-title">Booking tickets</h2>
+              <p>Toure to Louvre</p>
+            </div>
+              <form action="#" class="order-form">
+                <div class="datetime">
+                  <input placeholder="Date" type="text" name="date" class="date" id="date" onfocus="(this.type='date')">
+                  <input placeholder="Time" type="text" name="time" class="time" id="time" onfocus="(this.type='time')">
+                </div>
+                <input placeholder="Name" type="text" name="name" class="form-input" value="">
+                <input placeholder="E-mail" type="email" name="email" class="form-input" value="">
+                <input placeholder="Phone" type="tel" name="tel" class="form-input" value="">
+                <select name="ticketType" class="ticket-type">
+                  <option value="">Ticket Type</option>
+                  <option>Permanent exhibition</option>
+                  <option>Temporary exhibition</option>
+                  <option>Combined Admission</option>
+                </select>
+                <div class="ticket-entry">
+                  <h4 class="gold-title entry-title">Entry Ticket</h4>
+                  <div class="entry-item basic">
+                    <p>Basic 18+ (20 €)</p>
+                    <div>
+                      <button type="button" onclick="this.nextElementSibling.stepDown()">&minus;</button>
+                      <input type="number" min="0" max="20" readonly="" value="1">
+                      <button type="button" onclick="this.previousElementSibling.stepUp()">&#x2b;</button>
+                    </div>
+                  </div>
+                  <div class="entry-item senior">
+                    <p>Senior 65+ (10 €)</p>
+                    <div><button type="button" onclick="this.nextElementSibling.stepDown()">&minus;</button>
+                      <input type="number" min="0" max="20" readonly="" value="1">
+                      <button type="button" onclick="this.previousElementSibling.stepUp()">&#x2b;</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col2">
+              <div class="overview">
+                <h3>Overview</h3>
+                <p>Tour to Louvre</p>
+                <img src="assets/img/popup/louvre.png" alt="louvre" width="150" height="120">
+                <ul>
+                  <li class="date">Friday, August 19</li>
+                  <li class="time">16 : 30</li>
+                  <li class="check-circle">Temporary exhibition</li>
+                </ul>
+              </div>
+              <div class="prices">
+                <div class="row">
+                  <p><span class="amount">2</span>Basic (20 €) </p><span class="cost">40 €</span>
+                </div>
+                <div class="row">
+                  <p><span class="amount">2</span>Senior (10 €) </p><span class="cost">20 €</span>
+                </div>
+                <div class="total-cost">Total: <span>60 €</span></div>
+              </div>
+              <div class="card">
+                <div class="card-front">
+                <form action="#" class="card-form">
+                  <img src="assets/img/popup/visa.png" alt="" width="55" height="16" class="visa">
+                  <img src="assets/img/popup/mastercard.png" alt="" width="53" height="32" class="mastercard">
+                  <label>Card number<br>
+                    <input type="text" maxlength="16" id="cardNumber">
+                  </label>
+                  <label class="expiration">Expiration date<br>
+                    <input type="number" min="1" max="12" id="cardMonth">
+                    <input type="number" min="2021" max="2040" step="1" id="cardYear">
+                  </label>
+                  <label>Cardholder name
+                    <input type="text" maxlength="50" id="cardName">
+                  </label>
+                </form>
+              </div>
+              <div class="card-back">
+                <div class="blackline"></div>
+                <label class="cvc-cvv">&#8195;CVC/CVV<br>
+                  <input type="text" maxlength="4" id="cvc">
+                  <p>The last<br>3 or 4 digits<br>on back<br>of the card</p>
+                </label>
+              </div>
+            </div>
+            <button class="book-btn">Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/index.js"></script>
 </body>
 </html>

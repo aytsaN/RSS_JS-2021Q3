@@ -42,6 +42,13 @@ a:hover {
   cursor: pointer;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 .container {
   display: flex;
   margin: 0 auto;
@@ -600,7 +607,7 @@ a:hover {
   padding-bottom: 50px;
 }
 
-.amount .fieldset-title {
+.fieldset.amount .fieldset-title {
   padding-bottom: 25px;
 }
 
@@ -665,7 +672,7 @@ a:hover {
     transform: scale(1);
 }
 
-.amount {
+.fieldset.amount {
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -707,26 +714,26 @@ a:hover {
   cursor: pointer;
 }
 
-.amount .total {
+.fieldset .total {
   margin-top: 35px;
   margin-bottom: 60px;
 }
 
 .order-button {
-  height: 50px;
   width: 175px;
-  font-size: 22px;
+  padding: 12px 0;
   border-radius: 2px;
   background-color: #000000;
+  font-weight: 200;
+  font-size: 22px;
   color: #ffffff;
-}
-
-.order-button span{
-  font-weight: 200 !important;
+  text-align: center;
+  letter-spacing: 2px;
 }
 
 .order-button:hover {
   background-color: var(--font-gold);
+  font-weight: 400;
   color: #000000;
   cursor: pointer;
 }
@@ -776,7 +783,7 @@ a:hover {
 /* Footer */
 .page-footer {
   position: relative;
-  min-height: 390px;
+  min-height: 396px;
   height: 100%;
 }
 
@@ -818,9 +825,6 @@ a:hover {
 
 .social-item {
   align-self: flex-end;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-left: 25px;
   width: 46px;
   height: 46px;
@@ -829,9 +833,21 @@ a:hover {
   transition: .2s;
 }
 
+.social-item>a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .social-item .fab {
   color: #ffffff;
 
+}
+
+.social-item:hover {
+  border-color: var(--font-gold);
 }
 
 .social-item:hover .fab {
@@ -863,4 +879,408 @@ a:hover {
 
 .copyright a:hover {
   color: var(--font-gold);
+}
+
+/* Popup form */
+.order-popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s ease 0s;
+  z-index: 100;
+}
+
+.order-popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.order-popup:target .popup-wrapper {
+  transform: translate( 0px, 0px);
+  opacity: 1;
+}
+
+.popup-container {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-wrapper {
+  background-color: #fff;
+  color: black;
+  width: 1440px;
+  height: 845px;
+  position: absolute;
+  transition: all 0.7s ease 0s;
+  transform: translate(-100%, 0px);
+  opacity: 0;
+}
+
+.popup-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.overlay {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.popup-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 90px auto;
+  max-width: 960px;
+  gap: 40px;
+}
+
+.popup-content .col1,
+.popup-content .col2 {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.col1 {
+  max-width: 400px;
+}
+
+.col2 {
+  max-width: 530px;
+  padding: 25px 30px;
+  border: 1px solid #030303;
+}
+
+.popup-text {
+  background-image: url("assets/svg/popup/popup-logo.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.popup-title {
+  font-size: 50px;
+  padding-top: 40px;
+  margin-bottom: 15px;
+  letter-spacing: 0;
+}
+
+.popup-text p {
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--dark-red);
+  font-size: 18px;
+  color: var(--dark-red);
+}
+
+.datetime {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-form .datetime input,
+.order-form>input,
+.ticket-type {
+  height: 43px;
+  background-repeat: no-repeat;
+  background-position: 15px, 158px;
+  font-family: var(--font-family1);
+  font-size: 18px;
+  border: 1px solid #030303;
+  padding-left: 40px;
+}
+
+.order-form input::placeholder {
+  color: #000000;
+}
+
+.order-form .datetime input {
+  width: 150px;
+}
+
+.order-form .datetime input::-webkit-calendar-picker-indicator{
+  opacity: 0;
+}
+
+.order-form .datetime .date {
+  background-image: url("assets/svg/popup/date.svg"), url("assets/svg/popup/arrow.svg");
+}
+
+.order-form .datetime .time {
+  background-image: url("assets/svg/popup/time.svg"), url("assets/svg/popup/arrow.svg");
+}
+
+.form-input {
+  display: inline-block;
+  width: 90%;
+  margin-top: 20px;
+}
+
+.form-input[type="text"] {
+  background-image: url("assets/svg/popup/name.svg");
+}
+
+.form-input[type="email"] {
+  background-image: url("assets/svg/popup/email.svg");
+}
+
+.form-input[type="tel"] {
+  background-image: url("assets/svg/popup/tel.svg");
+}
+
+.ticket-type {
+  width: 100%;
+  margin-top: 20px;
+  background-image: url("assets/svg/popup/ballot.svg"), url("assets/svg/popup/arrow.svg");
+  background-position: 15px, 356px;
+  appearance: none;
+}
+
+.ticket-entry {
+  padding: 10px 15px;
+  border: 1px solid #030303;
+  margin-top: 20px;
+}
+
+.entry-title {
+  font-family: 'Forum', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--dark-red);
+}
+
+.entry-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.entry-item>div {
+  display: flex;
+}
+
+.entry-item input {
+  width: 35px;
+  height: 25px;
+  border: 1px solid #030303;
+  box-sizing: border-box;
+  text-align: end;
+}
+
+.entry-item button {
+  width: 35px;
+  height: 25px;
+  background-color: #030303;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+
+.entry-item.basic {
+  margin-bottom: 15px;
+}
+
+.overview {
+  position: relative;
+}
+
+.overview h3 {
+  font-weight: 500;
+  font-size: 32px;
+  color: #030303;
+  margin-bottom: 2px;
+}
+
+.overview p {
+  font-weight: 500;
+  font-size: 22px;
+  color: #740c11;
+  margin-bottom: 10px;
+}
+
+.overview li {
+  margin-bottom: 5px;
+  padding-left: 30px;
+  font-weight: 300;
+  font-size: 18px;
+  color: #030303;
+  background-repeat: no-repeat;
+  background-position-y: 3px;
+}
+
+.overview .date {
+  background-image: url("assets/svg/popup/date.svg");
+}
+
+.overview .time {
+  background-image: url("assets/svg/popup/time.svg");
+}
+
+.overview .check-circle {
+  background-image: url("assets/svg/popup/check_circle_outline.svg");
+}
+
+.overview img {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+}
+
+.prices .row,
+.prices .total-cost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prices .row {
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.prices .amount {
+  padding: 0 11px;
+  border-radius: 7px;
+  margin-right: 10px;
+  background-color: #000000;
+  font-size: 18px;
+  color: #a4a4a3;
+}
+
+.prices .total-cost {
+  font-size: 32px;
+  padding: 10px 0;
+  border-top: 2px solid var(--dark-red);
+}
+
+.card {
+  position: relative;
+}
+
+.card .card-front,
+.card .card-back {
+  width: 360px;
+  height: 210px;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.card-front {
+  background-color: #bcbcbc;
+  position: absolute;
+  z-index: 1;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 20px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.card-form input {
+  margin-top: 5px;
+  width: 215px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 0.5px solid #a4a4a4;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+#cardMonth {
+  width: 100px;
+  margin-right: 12px;
+}
+
+#cardYear {
+  width: 100px;
+}
+
+#cardMonth::-webkit-inner-spin-button,
+#cardYear::-webkit-inner-spin-button {
+  width: 28px;
+  height: 35px;
+  border: 1px solid #a4a4a4;
+}
+
+#cardName {
+  width: 320px;
+}
+
+.visa {
+  top: 34px;
+  right: 20px;
+  position: absolute;
+}
+
+.mastercard {
+  top: 65px;
+  right: 20px;
+  position: absolute;
+}
+
+.card-back {
+  background-color: #939393;
+  position: relative;
+  margin-left: 110px;
+  margin-top: 30px;
+}
+
+.blackline{
+  width: 360px;
+  height: 45px;
+  background-color:#161615;
+  position: absolute;
+  margin-top: 20px;
+}
+
+.card-back .cvc-cvv {
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 30px;
+  right: 15px;
+}
+
+#cvc {
+  margin: 5px 0;
+  width: 75px;
+  height: 35px;
+  text-align: center;
+}
+
+.card-back p {
+  padding-left: 10px;
+  font-size: 10px;
+}
+
+.book-btn {
+  align-self: self-end;
+  width: 220px;
+  height: 45px;
+  border: none;
+  border-radius: 2px;
+  margin-top: 25px;
+  background-color: var(--dark-red);
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 22px;
 }
