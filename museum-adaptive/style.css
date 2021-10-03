@@ -780,6 +780,7 @@ button:focus {
 
 .picture-inner-container img {
   margin-bottom: 24px;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -789,10 +790,6 @@ button:focus {
 
   .picture-container {
     max-height: 1260px;
-  }
-
-  .picture-inner-container img {
-    width: 100%;
   }
 }
 
@@ -1144,7 +1141,6 @@ button:focus {
 @media (max-width: 1024px) {
   .footer-navigation ul {
     column-gap: 30%;
-    padding-top: 5px;
   }
 }
 
