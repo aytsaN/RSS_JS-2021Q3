@@ -782,6 +782,20 @@ button:focus {
   margin-bottom: 24px;
 }
 
+@media (max-width: 1024px) {
+  .gallery-section .container {
+    margin-top: 10px;
+  }
+
+  .picture-container {
+    max-height: 1260px;
+  }
+
+  .picture-inner-container img {
+    width: 100%;
+  }
+}
+
 /* Tickets section */
 .tickets-content {
   display: flex;
