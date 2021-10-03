@@ -1002,17 +1002,21 @@ button:focus {
     text-align: center;
   }
 
+  .amount-item {
+    margin-bottom: 30px;
+  }
+
   .amount-item label {
     padding-bottom: 10px;
   }
 
   .fieldset .total {
-    margin-top: 15px;
-    margin-bottom: 70px;
+    margin-top: 0;
+    margin-bottom: 65px;
   }
 
   .amount-sum {
-    padding-left: 10px;
+    padding-left: 15px;
   }
 }
 
@@ -1030,6 +1034,10 @@ button:focus {
   display: flex;
   justify-content: space-between;
   max-height: 810px;
+}
+
+.contacts-text {
+  flex-basis: 35%;
 }
 
 .address-name {
@@ -1053,8 +1061,9 @@ button:focus {
 }
 
 .map {
-  height: 620px;
-  width: 960px;
+  flex-basis: 65%;
+  max-height: 620px;
+  max-width: 960px;
   background-image: url("assets/img/map.png");
 }
 
