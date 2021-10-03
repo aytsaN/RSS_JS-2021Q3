@@ -802,21 +802,45 @@ button:focus {
   gap: 60px;
 }
 
+.tickets-content-img {
+  max-width: 720px;
+  max-height: 550px;
+  width: 100%;
+  height: auto;
+  background-image: url("assets/img/tickets-section.png");
+  background-position: center;
+}
+
 .tickets-content img {
   width: 50%;
   height: 50%;
+}
+
+@media (max-width: 1024px) {
+  .tickets-content {
+    justify-content: space-between;
+    column-gap: 80px;
+  }
 }
 
 .tickets-form {
   display: flex;
   justify-content: space-between;
   flex-basis: 50%;
+  margin-bottom: 105px;
+}
+
+@media (max-width: 1024px) {
+  .tickets-form {
+    flex-basis: 30%;
+    margin-bottom: 0;
+  }
 }
 
 .fieldset-title,
 .tickets-form .total {
   font-weight: 700;
-  font-size: var(--font3);
+  font-size: 28px;
 }
 
 .type .fieldset-title {
@@ -894,10 +918,25 @@ button:focus {
   align-items: end;
 }
 
+@media (max-width: 1024px) {
+  .fieldset.type {
+    display: none;
+  }
+
+  .fieldset.amount {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .fieldset.amount > * {
+    width: 85%;
+  }
+}
+
 .amount-item {
   margin-bottom: 13px;
   font-weight: var(--font-light);
-  font-size: var(--font4);
+  font-size: 20px;
 }
 
 .amount-item label {
@@ -954,6 +993,29 @@ button:focus {
   cursor: pointer;
 }
 
+@media (max-width: 1024px) {
+  .input-number-container {
+    width: auto;
+  }
+
+  .input-number-container input {
+    text-align: center;
+  }
+
+  .amount-item label {
+    padding-bottom: 10px;
+  }
+
+  .fieldset .total {
+    margin-top: 15px;
+    margin-bottom: 70px;
+  }
+
+  .amount-sum {
+    padding-left: 10px;
+  }
+}
+
 /* Parallax */
 .parallax {
   width: 100%;
@@ -973,7 +1035,7 @@ button:focus {
 .address-name {
   padding-bottom: 50px;
   font-weight: 500;
-  font-size: 28px;
+  font-size: var(--font3);
 }
 
 .address {
