@@ -111,7 +111,7 @@ button:focus {
 @media (max-width: 1024px) {
   .underline-title {
     padding-bottom: 20px;
-    margin-bottom: 62px;
+    margin-bottom: 61px;
     line-height: 75px;
   }
 }
@@ -1037,7 +1037,7 @@ button:focus {
 }
 
 .contacts-text {
-  flex-basis: 35%;
+  flex-basis: 30%;
 }
 
 .address-name {
@@ -1048,7 +1048,7 @@ button:focus {
 
 .address {
   font-weight: var(--font-light);
-  font-size: 22px;
+  font-size: var(--font4);
   font-style: normal;
 }
 
@@ -1061,10 +1061,27 @@ button:focus {
 }
 
 .map {
-  flex-basis: 65%;
+  flex-basis: 70%;
   max-height: 620px;
   max-width: 960px;
+  height: 45vw;
   background-image: url("assets/img/map.png");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 1024px) {
+  .contacts-content {
+    max-height: 455px;
+  }
+
+  .address-name {
+    padding-bottom: 30px;
+  }
+
+  .address > * {
+    padding-bottom: 15px;
+  }
 }
 
 /* Footer */
@@ -1072,6 +1089,12 @@ button:focus {
   position: relative;
   min-height: 396px;
   height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .page-footer {
+    min-height: 368px;
+  }
 }
 
 .footer-container {
@@ -1085,6 +1108,12 @@ button:focus {
   margin-top: 30px;
 }
 
+@media (max-width: 1024px) {
+  .footer-container .top-line {
+    margin-top: 10px;
+  }
+}
+
 .footer-container .top-line>* {
   display: flex;
   width: 33%;
@@ -1095,7 +1124,7 @@ button:focus {
 }
 
 .footer-navigation {
-  padding-left: 30px;
+  margin-left: 30px;
   max-height: 135px;
 }
 
@@ -1106,6 +1135,17 @@ button:focus {
   column-gap: 15%;
   row-gap: 25px;
   width: 100%;
+}
+
+.footer-navigation ul a {
+  font-size: 22px;
+}
+
+@media (max-width: 1024px) {
+  .footer-navigation ul {
+    column-gap: 30%;
+    padding-top: 5px;
+  }
 }
 
 .social {
