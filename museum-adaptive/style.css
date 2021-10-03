@@ -17,6 +17,15 @@
   --font-family2: 'Forum', cursive;
 }
 
+@media (max-width: 1024px) {
+  :root {
+    --font1: 50px;
+    --font2: 28px;
+    --font3: 24px;
+    --font4: 20px;
+  }
+}
+
 * {
   margin: 0;
   border: 0;
@@ -55,6 +64,13 @@ button:focus {
   max-width: 1440px;
   width: 100%;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    width: 96%;
+  }
+}
+
 
 .section {
   padding: 75px 0;
@@ -107,6 +123,13 @@ button:focus {
   color: var(--font-white);
 }
 
+@media (max-width: 1024px) {
+  .header-container {
+    height: 130px;
+    width: 96%;
+  }
+}
+
 .logo {
   display: inline-flex;
   align-items: baseline;
@@ -123,7 +146,7 @@ button:focus {
 .logo-text {
   padding-left: 25px;
   font-family: var(--font-family2);
-  font-size: var(--font3);
+  font-size: 28px;
   font-weight: var(--font-regular);
   letter-spacing: 5px;
   text-transform: uppercase;
@@ -133,6 +156,12 @@ button:focus {
   max-width: 775px;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .header-navigation {
+    display: none;
+  }
 }
 
 .nav-list {
@@ -175,7 +204,14 @@ button:focus {
 .welcome-section .container {
   position: relative;
   justify-content: flex-end;
-  min-height: 810px;
+  max-height: 810px;
+  height: 60vw;
+}
+
+@media (max-width: 1024px) {
+  .welcome-section .container {
+    max-height: 585px;
+  }
 }
 
 .welcome-content {
@@ -186,12 +222,24 @@ button:focus {
   z-index: 50;
 }
 
+@media (max-width: 1024px) {
+  .welcome-content {
+    top: 50px;
+  }
+}
+
 .welcome-text {
-  margin-bottom: 75px;
+  margin-bottom: 13%;
 }
 
 .main-heading {
   margin-bottom: 25px;
+}
+
+@media (max-width: 1024px) {
+  .main-heading {
+    line-height: 90px;
+  }
 }
 
 .slogan {
@@ -202,13 +250,21 @@ button:focus {
 
 .btn-link {
   display: inline-block;
-  padding: 25px 65px;
+  padding: 4% 0;
+  width: 60%;
   border-radius: 10px;
   font-size: var(--font4);
   font-weight: var(--font-light);
   color: var(--font-white);
   background-color: var(--dark-red);
+  text-align: center;
   letter-spacing: 2px;
+}
+
+@media (max-width: 1024px) {
+  .btn-link {
+    width: 75%;
+  }
 }
 
 .btn-link:hover {
@@ -230,6 +286,7 @@ button:focus {
   background-image: url("assets/img/welcome-slider/1.jpg");
   background-position: top right;
   background-repeat: no-repeat;
+  background-size: 100%;
   box-shadow: inset 300px 0px 200px -140px #000000;
 }
 
@@ -238,12 +295,21 @@ button:focus {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
+  column-gap: 10%;
   right: 0;
   bottom: 0;
   width: 45%;
   height: 40px;
   padding: 40px 75px;
   background-color: var(--bg-dark);
+}
+
+@media (max-width: 1024px) {
+  .carousel-control {
+    width: 60%;
+    padding: 40px 10% 40px 30%;
+    column-gap: 35px;
+  }
 }
 
 .slide-num {
@@ -261,10 +327,10 @@ button:focus {
 }
 
 .slide-pagination {
+  flex-grow: 2;
   display: flex;
   justify-content: space-between;
-  flex-grow: 2;
-  padding: 0 40px;
+  column-gap: 20px;
 }
 
 .slide-pagination-item {
@@ -272,6 +338,13 @@ button:focus {
   height: 16px;
   background-color: var(--font-white);
   transition: 0.2s;
+}
+
+@media (max-width: 1024px) {
+  .slide-pagination-item {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 .slide-pagination-item:hover {
