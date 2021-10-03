@@ -428,6 +428,7 @@ button:focus {
   top: 35%;
   left: 42%;
   z-index: 50;
+  background-color: transparent;
   opacity: .5;
   cursor: pointer;
   transition: .2s;
@@ -483,7 +484,7 @@ button:focus {
 
 .volume-controls {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 18%;
 }
@@ -797,15 +798,14 @@ button:focus {
 }
 
 .footer-container {
-  justify-content: space-between;
-  padding-top: 90px;
-  height: 100%;
+  justify-content: space-around;
+  min-height: inherit;
 }
 
 .footer-container .top-line {
   display: flex;
   justify-content: space-between;
-
+  margin-top: 30px;
 }
 
 .footer-container .top-line>* {
@@ -832,7 +832,6 @@ button:focus {
 
 .social {
   flex: 2;
-  display: flex;
   justify-content: flex-end;
 }
 
@@ -883,7 +882,6 @@ button:focus {
 .copyright {
   display: flex;
   justify-content: space-between;
-  padding-top: 100px;
 }
 
 .copyright,
@@ -974,7 +972,7 @@ button:focus {
 
 .col2 {
   max-width: 530px;
-  padding: 25px 30px;
+  padding: 25px 25px;
   border: 1px solid #030303;
 }
 
