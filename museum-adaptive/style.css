@@ -27,6 +27,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  :root {
+    --font1: 40px;
+    --font2: 22px;
+    --font3: 20px;
+  }
+}
+
 * {
   margin: 0;
   border: 0;
@@ -77,6 +85,12 @@ button:focus {
 
   .section {
     padding: 60px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
   }
 }
 
@@ -142,6 +156,12 @@ button:focus {
   .header-container {
     height: 130px;
     width: 96%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    height: 110px;
   }
 }
 
@@ -286,7 +306,7 @@ button:focus {
   align-items: center;
   position: relative;
 
-  width: 25px;
+  width: 32px;
   height: 25px;
 
   cursor: pointer;
@@ -333,6 +353,16 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .welcome-section .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-height: 860px;
+    height: 100%;
+  }
+}
+
 .welcome-content {
   position: absolute;
   top: 150px;
@@ -347,8 +377,21 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .welcome-content {
+    position: static;
+    text-align: center;
+  }
+}
+
 .welcome-text {
   margin-bottom: 13%;
+}
+
+@media (max-width: 768px) {
+  .welcome-text {
+    margin-bottom: 14%;
+  }
 }
 
 .main-heading {
@@ -358,6 +401,12 @@ button:focus {
 @media (max-width: 1024px) {
   .main-heading {
     line-height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-heading {
+    line-height: 60px;
   }
 }
 
@@ -386,6 +435,12 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .btn-link {
+    display: none;
+  }
+}
+
 .btn-link:hover {
   background-color: var(--font-gold);
 }
@@ -393,11 +448,20 @@ button:focus {
 .welcome-carousel {
   position: relative;
   width: 70%;
-
 }
 
 .welcome-carousel .item-container {
   height: 100%;
+}
+
+@media (max-width: 768px) {
+  .welcome-carousel {
+    width: 100%;
+  }
+
+  .welcome-carousel .item-container {
+    height: 71vw;
+  }
 }
 
 .carousel-item {
@@ -407,6 +471,12 @@ button:focus {
   background-repeat: no-repeat;
   background-size: 100%;
   box-shadow: inset 300px 0px 200px -140px #000000;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    box-shadow: none;
+  }
 }
 
 .carousel-control {
@@ -431,6 +501,16 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .carousel-control {
+    position: static;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
 .slide-num {
   display: flex;
   justify-content: space-between;
@@ -445,11 +525,23 @@ button:focus {
   padding: 0 10px;
 }
 
+.slide-num .divider {
+  display: flex;
+  align-items: center;
+}
+
 .slide-pagination {
   flex-grow: 2;
   display: flex;
   justify-content: space-between;
   column-gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .slide-pagination {
+    flex-grow: inherit;
+    column-gap: 25px;
+  }
 }
 
 .slide-pagination-item {
