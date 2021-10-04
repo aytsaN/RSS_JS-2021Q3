@@ -32,6 +32,7 @@
     --font1: 40px;
     --font2: 22px;
     --font3: 20px;
+    --font4: 18px;
   }
 }
 
@@ -92,6 +93,10 @@ button:focus {
   .container {
     width: 95%;
   }
+
+  .section {
+    padding: 40px 0;
+  }
 }
 
 .column-container {
@@ -127,6 +132,13 @@ button:focus {
     padding-bottom: 20px;
     margin-bottom: 61px;
     line-height: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .underline-title {
+    margin-bottom: 44px;
+    line-height: 60px;
   }
 }
 
@@ -652,7 +664,7 @@ button:focus {
     width: 75%;
   }
 
-  .visiting-item figure{
+  .visiting-item figure {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -673,6 +685,34 @@ button:focus {
 
   .virtual-tour-text {
     padding-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .visiting-item {
+    width: 41%;
+  }
+
+  .visiting-item figure {
+    align-items: flex-start;
+  }
+
+  .visiting-content {
+    justify-content: space-around;
+    padding: 0 25px;
+    gap: 38px 0;
+  }
+
+  .visiting-item-desc {
+    width: 100%;
+  }
+
+  .visiting-item-img {
+    width: 100%;
+  }
+
+  .underline-subtitle::after {
+    width: 53%;
   }
 }
 
