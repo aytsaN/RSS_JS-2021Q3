@@ -1803,7 +1803,12 @@ button:focus {
   }
 }
 
-
+@media (max-width: 420px) {
+  .map {
+    height: 60vw;
+    margin-bottom: 9px;
+  }
+}
 
 /* Footer */
 .page-footer {
