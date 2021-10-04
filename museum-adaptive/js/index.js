@@ -36,3 +36,17 @@ imgArr.forEach(el => {
 
 pictureInnerContainer.innerHTML = resultStr;
 
+const asideMenu = document.querySelector('.header-navigation');
+const burger = document.querySelector('.nav-btn');
+const burgerCheckbox = document.querySelector('.nav-toggle');
+
+document.addEventListener('click', e => {
+  console.log('hereeee', e.target)
+  let target = e.target;
+  let isBurger = target == burger;
+  let burgerIsChecked = burgerCheckbox.checked;
+
+  if (e.target !== asideMenu  && !isBurger && burgerIsChecked && e.target !== burgerCheckbox) {
+    burgerCheckbox.checked = false;
+  }
+})
