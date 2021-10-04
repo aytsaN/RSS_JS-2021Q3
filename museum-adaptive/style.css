@@ -95,7 +95,7 @@ button:focus {
   }
 
   .section {
-    padding: 40px 0 80px;
+    padding: 40px 0;
   }
 }
 
@@ -106,12 +106,6 @@ button:focus {
 .dark-section {
   background-color: var(--bg-dark);
   color: var(--font-white);
-}
-
-@media (max-width: 768px) {
-  .dark-section {
-    padding: 40px 0;
-  }
 }
 
 .section-title {
@@ -143,7 +137,7 @@ button:focus {
 
 @media (max-width: 768px) {
   .underline-title {
-    margin-bottom: 44px;
+    margin-bottom: 40px;
     line-height: 60px;
   }
 }
@@ -705,8 +699,8 @@ button:focus {
 
   .visiting-content {
     justify-content: space-around;
-    padding: 0 25px;
-    gap: 38px 0;
+    padding: 0 25px 40px;
+    gap: 40px 0;
   }
 
   .visiting-item-desc {
@@ -806,6 +800,8 @@ button:focus {
 @media (max-width: 768px) {
   .explore-slider {
     margin-top: 0;
+    max-width: 725px;
+    max-height: 705px;
   }
 }
 
@@ -843,6 +839,12 @@ button:focus {
   position: relative;
   width: 100%;
   clip-path: inset(9% 0 0 0);
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    clip-path: inset(6% 0 0 0);
+  }
 }
 
 .playback-animation {
@@ -1002,6 +1004,7 @@ button:focus {
 @media (max-width: 768px) {
   .video-slider {
     padding-top: 20px;
+    padding-bottom: 40px;
   }
 }
 
@@ -1023,7 +1026,7 @@ button:focus {
   }
 
   .video-slider-content iframe {
-    max-height: 200px;
+    max-height: 197px;
   }
 
   .video-slider-content iframe:last-child {
@@ -1141,7 +1144,11 @@ button:focus {
   }
 }
 
-
+@media (max-width: 768px) {
+  .picture-container {
+    max-height: 1084px;
+  }
+}
 
 /* Tickets section */
 .tickets-content {
@@ -1170,6 +1177,20 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .tickets-content {
+    justify-content: flex-start;
+    column-gap: 60px;
+  }
+
+  .tickets-content-img {
+    max-width: 445px;
+    max-height: 340px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
 .tickets-form {
   display: flex;
   justify-content: space-between;
@@ -1181,6 +1202,12 @@ button:focus {
   .tickets-form {
     flex-basis: 30%;
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .tickets-form {
+    flex-basis: 28%;
   }
 }
 
@@ -1196,6 +1223,12 @@ button:focus {
 
 .fieldset.amount .fieldset-title {
   padding-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .fieldset.amount .fieldset-title {
+    padding-bottom: 39px;
+  }
 }
 
 .tickets-content .fieldset .inputs .row {
@@ -1283,7 +1316,7 @@ button:focus {
 .amount-item {
   margin-bottom: 13px;
   font-weight: var(--font-light);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .amount-item label {
@@ -1364,6 +1397,17 @@ button:focus {
 
   .amount-sum {
     padding-left: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .amount-item {
+    margin-bottom: 23px;
+  }
+
+  .fieldset .total {
+    margin-top: 13px;
+    margin-bottom: 41px;
   }
 }
 
