@@ -1433,6 +1433,12 @@ button:focus {
   max-height: 810px;
 }
 
+@media (max-width: 768px) {
+  .contacts-content {
+    flex-direction: column;
+  }
+}
+
 .contacts-text {
   flex-basis: 30%;
 }
@@ -1457,16 +1463,6 @@ button:focus {
   padding-bottom: 25px;
 }
 
-.map {
-  flex-basis: 70%;
-  max-height: 620px;
-  max-width: 960px;
-  height: 45vw;
-  background-image: url("assets/img/map.png");
-  background-position: center;
-  background-size: cover;
-}
-
 @media (max-width: 1024px) {
   .contacts-content {
     max-height: 455px;
@@ -1480,6 +1476,40 @@ button:focus {
     padding-bottom: 15px;
   }
 }
+
+@media (max-width: 768px) {
+  .contacts-content {
+    max-height: 730px;
+    row-gap: 25px;
+  }
+
+  .address-name {
+    padding-bottom: 35px;
+  }
+}
+
+.map {
+  flex-basis: 70%;
+  max-height: 620px;
+  max-width: 960px;
+  height: 45vw;
+  background-image: url("assets/img/map.png");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .map {
+    flex-basis: auto;
+    max-height: 476px;
+    max-width: 728px;
+    height: 65vw;
+    margin-bottom: 25px;
+    background-size: auto;
+  }
+}
+
+
 
 /* Footer */
 .page-footer {
