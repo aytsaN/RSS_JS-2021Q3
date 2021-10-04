@@ -272,7 +272,7 @@ button:focus {
     justify-content: space-between;
   }
 
-  .nav-item>a::after {
+  .header-nav-itema::after {
     content: ">";
     transform: scale(.7, 1.4);
   }
@@ -1524,6 +1524,12 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .page-footer {
+    min-height: 415px;
+  }
+}
+
 .footer-container {
   justify-content: space-around;
   min-height: inherit;
@@ -1541,6 +1547,14 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .footer-container .top-line {
+    flex-wrap: wrap;
+    margin-top: 5px;
+    row-gap: 30px;
+  }
+}
+
 .footer-container .top-line>* {
   display: flex;
   width: 33%;
@@ -1548,6 +1562,12 @@ button:focus {
 
 .footer-logo {
   flex: 1;
+}
+
+@media (max-width: 768px) {
+  .footer-logo {
+    flex-grow: 30%;
+  }
 }
 
 .footer-navigation {
@@ -1574,9 +1594,31 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .footer-navigation {
+    flex-basis: 59%;
+    padding-top: 10px;
+  }
+
+  .footer-navigation ul {
+    column-gap: 22%;
+  }
+
+  .footer-navigation ul a {
+    font-size: 18px;
+  }
+}
+
 .social {
   flex: 2;
   justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .social {
+    flex-basis: 100%;
+    padding: 0 12%;
+  }
 }
 
 .social ul {
@@ -1623,6 +1665,12 @@ button:focus {
   background-color: #666666;
 }
 
+@media (max-width: 768px) {
+  .page-footer::after {
+    bottom: 102px;
+  }
+}
+
 .copyright {
   display: flex;
   justify-content: space-between;
@@ -1630,7 +1678,7 @@ button:focus {
 
 .copyright,
 .copyright a {
-  font-size: var(--font4);
+  font-size: 22px;
   font-weight: var(--font-thin);
   letter-spacing: 2px;
   color: var(--font-white);
@@ -1684,6 +1732,15 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .popup-wrapper {
+    max-width: 590px;
+    max-height: 1500px;
+    height: 100%;
+    overflow-x: auto;
+  }
+}
+
 .order-popup:target .popup-wrapper {
   display: block;
   transform: translate(0, 0);
@@ -1716,6 +1773,15 @@ button:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .popup-content {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    row-gap: 50px;
+  }
+}
+
 .popup-content .col1,
 .popup-content .col2 {
   box-sizing: border-box;
@@ -1737,6 +1803,18 @@ button:focus {
 @media (max-width: 1024px) {
   .col2 {
     padding: 25px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .popup-content .col1,
+  .popup-content .col2 {
+    max-width: 90%;
+    width: 100%;
+  }
+
+  .col2 {
+    padding: 25px 20px;
   }
 }
 
@@ -1777,12 +1855,24 @@ button:focus {
   padding-left: 40px;
 }
 
+@media (max-width: 768px) {
+  .order-form .datetime input {
+    background-position: 15px, 220px;
+  }
+}
+
 .order-form input::placeholder {
   color: #000000;
 }
 
 .order-form .datetime input {
   width: 150px;
+}
+
+@media (max-width: 768px) {
+  .order-form .datetime input {
+    width: 40%;
+  }
 }
 
 .order-form .datetime input::-webkit-calendar-picker-indicator{
@@ -1801,6 +1891,12 @@ button:focus {
   display: inline-block;
   width: 90%;
   margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-input {
+    width: 92%;
+  }
 }
 
 .form-input[type="text"] {
@@ -1824,6 +1920,12 @@ button:focus {
   appearance: none;
 }
 
+@media (max-width: 768px) {
+  .ticket-type {
+    background-position: 15px, 500px;
+  }
+}
+
 .ticket-type option:checked,
 .ticket-type option:hover {
   background-color: #e7e7e7;
@@ -1842,6 +1944,12 @@ button:focus {
   padding-bottom: 5px;
   margin-bottom: 20px;
   border-bottom: 2px solid var(--dark-red);
+}
+
+@media (max-width: 768px) {
+  .entry-title {
+    margin-bottom: 15px;
+  }
 }
 
 .entry-item {
@@ -2030,6 +2138,12 @@ button:focus {
   margin-top: 30px;
 }
 
+@media (max-width: 768px) {
+  .card-back {
+    margin-left: 133px;
+  }
+}
+
 .blackline{
   width: 360px;
   height: 45px;
@@ -2070,3 +2184,10 @@ button:focus {
   font-size: 22px;
   position: relative;
 }
+
+@media (max-width: 768px) {
+  .order-form {
+    margin-top: 40px;
+  }
+}
+
