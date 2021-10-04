@@ -857,6 +857,12 @@ button:focus {
   flex: 1;
 }
 
+@media (max-width: 420px) {
+  .explore-desc {
+    flex: none;
+  }
+}
+
 .explore-text {
   padding-bottom: 25px;
   font-weight: var(--font-light);
@@ -882,6 +888,13 @@ button:focus {
 @media (max-width: 768px) {
   .explore-text {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .explore-container {
+    min-height: 520px;
+    column-gap: 60px;
   }
 }
 
@@ -927,6 +940,14 @@ button:focus {
     margin-top: 0;
     max-width: 725px;
     max-height: 705px;
+  }
+}
+
+@media (max-width: 420px) {
+  .explore-slider::after {
+    right: 34%;
+    top: -45%;
+    transform: scale(.526);
   }
 }
 
