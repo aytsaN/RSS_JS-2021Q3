@@ -1854,6 +1854,13 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .footer-container .top-line {
+    flex-direction: column;
+    margin-top: 0;
+  }
+}
+
 .footer-container .top-line>* {
   display: flex;
   width: 33%;
@@ -1908,6 +1915,27 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .footer-container .top-line>* {
+    width: 100%;
+  }
+
+  .footer-navigation {
+    padding-top: 0;
+    margin: 0;
+    max-height: 80px;
+  }
+
+  .footer-navigation ul {
+    column-gap: 23%;
+    row-gap: 30px;
+  }
+
+  .footer-navigation ul a {
+    font-size: 16px;
+  }
+}
+
 .social {
   flex: 2;
   justify-content: flex-end;
@@ -1920,8 +1948,21 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .social {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
 .social ul {
   display: flex;
+}
+
+@media (max-width: 420px) {
+  .social ul {
+    column-gap: 5px;
+  }
 }
 
 .social-item {
@@ -1932,6 +1973,12 @@ button:focus {
   border: 1px solid #666666;
   border-radius: 50%;
   transition: .2s;
+}
+
+@media (max-width: 420px) {
+  .social-item {
+    margin: 0;
+  }
 }
 
 .social-item>a {
@@ -1970,6 +2017,12 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .page-footer::after {
+    bottom: 117px;
+  }
+}
+
 .copyright {
   display: flex;
   justify-content: space-between;
@@ -1985,6 +2038,21 @@ button:focus {
 
 .copyright a:hover {
   color: var(--font-gold);
+}
+
+@media (max-width: 420px) {
+  .copyright,
+  .copyright a {
+    font-size: 16px;
+  }
+
+  .copyright {
+   height: 40px;
+  }
+
+  .copyright a[href="https://rs.school/"] {
+    display: none;
+  }
 }
 
 /* Popup form */
