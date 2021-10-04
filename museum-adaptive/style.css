@@ -112,6 +112,10 @@ button:focus {
   .container {
     width: 90%;
   }
+
+  .section {
+    padding: 30px 0 0;
+  }
 }
 
 .column-container {
@@ -154,6 +158,12 @@ button:focus {
   .underline-title {
     margin-bottom: 40px;
     line-height: 60px;
+  }
+}
+
+@media (max-width: 420px) {
+  .underline-title {
+    padding-bottom: 10px;
   }
 }
 
@@ -534,7 +544,7 @@ button:focus {
 
 @media (max-width: 420px) {
   .welcome-carousel .item-container {
-    height: 70vw;
+    height: 69vw;
   }
 }
 
@@ -587,7 +597,7 @@ button:focus {
 
 @media (max-width: 420px) {
   .carousel-control {
-    height: 70px;
+    height: 75px;
     column-gap: 20px;
   }
 }
@@ -777,6 +787,12 @@ button:focus {
     letter-spacing: 3px;
   }
 
+  @media (max-width: 420px) {
+    .underline-subtitle {
+      letter-spacing: 5px;
+    }
+  }
+
   .underline-subtitle::after {
     bottom: -10px;
     width: 45%;
@@ -812,6 +828,16 @@ button:focus {
 
   .underline-subtitle::after {
     width: 53%;
+  }
+}
+
+@media (max-width: 420px) {
+  .visiting-item {
+    width: 85%;
+  }
+
+  .visiting-content {
+    gap: 41px 0;
   }
 }
 
