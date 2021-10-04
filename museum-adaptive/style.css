@@ -1420,6 +1420,12 @@ button:focus {
   background-size: cover;
 }
 
+@media (max-width: 768px) {
+  .parallax {
+    height: 300px;
+  }
+}
+
 /* Contacts section */
 .contacts-content {
   display: flex;
