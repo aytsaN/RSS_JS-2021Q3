@@ -114,7 +114,7 @@ button:focus {
   }
 
   .section {
-    padding: 30px 0 0;
+    padding: 30px 0;
   }
 }
 
@@ -837,6 +837,7 @@ button:focus {
   }
 
   .visiting-content {
+    padding-bottom: 10px;
     gap: 41px 0;
   }
 }
@@ -893,7 +894,7 @@ button:focus {
 
 @media (max-width: 420px) {
   .explore-container {
-    min-height: 520px;
+    min-height: 490px;
     column-gap: 60px;
   }
 }
@@ -1196,7 +1197,7 @@ button:focus {
 
 @media (max-width: 420px) {
   .video-slider {
-    padding-bottom: 35px;
+    padding-bottom: 5px;
     margin-top: 30px;
   }
 }
@@ -1415,6 +1416,19 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .tickets-content {
+    flex-direction: column;
+    margin-bottom: 10px;
+    row-gap: 40px;
+  }
+
+  .tickets-content-img {
+    height: 38vw;
+    background-size: cover;
+  }
+}
+
 .tickets-form {
   display: flex;
   justify-content: space-between;
@@ -1435,6 +1449,12 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .tickets-form {
+    justify-content: center;
+  }
+}
+
 .fieldset-title,
 .tickets-form .total {
   font-weight: 700;
@@ -1452,6 +1472,18 @@ button:focus {
 @media (max-width: 768px) {
   .fieldset.amount .fieldset-title {
     padding-bottom: 39px;
+  }
+}
+
+@media (max-width: 420px) {
+  .fieldset-title,
+  .tickets-form .total {
+  font-size: 16px;
+  }
+
+  .fieldset.amount .fieldset-title {
+    text-align: center;
+    padding-bottom: 20px;
   }
 }
 
@@ -1537,6 +1569,13 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .fieldset.amount {
+    width: 54%;
+    align-items: center;
+  }
+}
+
 .amount-item {
   margin-bottom: 13px;
   font-weight: var(--font-light);
@@ -1546,6 +1585,12 @@ button:focus {
 .amount-item label {
   display: block;
   padding-bottom: 15px;
+}
+
+@media (max-width: 420px) {
+  .amount-item {
+    font-size: 16px;
+  }
 }
 
 .input-number-container {
@@ -1632,6 +1677,31 @@ button:focus {
   .fieldset .total {
     margin-top: 13px;
     margin-bottom: 41px;
+  }
+}
+
+@media (max-width: 420px) {
+  .amount-item {
+    padding-bottom: 0;
+    margin-bottom: 18px;
+  }
+
+  .amount-item label {
+    padding-bottom: 15px;
+  }
+
+  .fieldset .total {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .amount-sum {
+    padding-left: 5px;
+  }
+
+  .order-button {
+    padding: 16px 0;
+    font-size: 16px;
   }
 }
 
