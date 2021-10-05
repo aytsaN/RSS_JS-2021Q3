@@ -39,6 +39,7 @@ pictureInnerContainer.innerHTML = resultStr;
 const asideMenu = document.querySelector('.header-navigation');
 const burger = document.querySelector('.nav-btn');
 const burgerCheckbox = document.querySelector('.nav-toggle');
+const welcomeText = document.querySelector('.welcome-content');
 
 document.addEventListener('click', e => {
   console.log('hereeee', e.target)
@@ -50,3 +51,7 @@ document.addEventListener('click', e => {
     burgerCheckbox.checked = false;
   }
 })
+
+// document.querySelector('#navToggle').addEventListener('change', () => {
+//   welcomeText.classList.toggle('hidden');
+// })

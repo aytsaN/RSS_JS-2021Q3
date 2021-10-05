@@ -325,7 +325,7 @@ button:focus {
     justify-content: space-between;
   }
 
-  .header-nav-itema::after {
+  .header-nav-item::after {
     content: ">";
     transform: scale(.7, 1.4);
   }
@@ -367,7 +367,7 @@ button:focus {
 }
 
 .nav-btn {
-  display: flex;
+  display: none;
   align-items: center;
   position: relative;
 
@@ -398,6 +398,12 @@ button:focus {
 .nav-btn > span::after {
   content: '';
   top: 8px;
+}
+
+@media (max-width: 1024px) {
+  .nav-btn {
+    display: flex;
+  }
 }
 
 /* Welcome section */
