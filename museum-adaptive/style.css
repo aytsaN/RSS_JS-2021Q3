@@ -1088,6 +1088,12 @@ button:focus {
   transition: .1s;
 }
 
+@media (max-width: 1024px) {
+  .video-controls button {
+    transform: scale(.7);
+  }
+}
+
 .video-controls button:hover {
   opacity: .5;
 }
@@ -1117,6 +1123,7 @@ button:focus {
 @media (max-width: 1024px) {
   .progress {
     height: 5px;
+    width: 57%;
   }
 }
 
