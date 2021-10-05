@@ -838,7 +838,7 @@ button:focus {
 
   .visiting-content {
     padding-bottom: 10px;
-    gap: 41px 0;
+    gap: 43px 0;
   }
 }
 
@@ -1782,6 +1782,12 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .address-name {
+    padding-bottom: 38px;
+  }
+}
+
 .map {
   flex-basis: 70%;
   max-height: 620px;
@@ -1868,6 +1874,7 @@ button:focus {
 
 .footer-logo {
   flex: 1;
+  width: 25%;
 }
 
 @media (max-width: 768px) {
@@ -1921,13 +1928,14 @@ button:focus {
   }
 
   .footer-navigation {
+    overflow: hidden;
     padding-top: 0;
     margin: 0;
     max-height: 80px;
   }
 
   .footer-navigation ul {
-    column-gap: 23%;
+    column-gap: 21vw;
     row-gap: 30px;
   }
 
@@ -1957,6 +1965,13 @@ button:focus {
 
 .social ul {
   display: flex;
+  column-gap: 1.3vw;
+}
+
+@media (max-width: 1024px) {
+  .social ul {
+    column-gap: 2.4vw;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1967,7 +1982,6 @@ button:focus {
 
 .social-item {
   align-self: flex-end;
-  margin-left: 25px;
   width: 46px;
   height: 46px;
   border: 1px solid #666666;
@@ -2185,6 +2199,17 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .popup-content .col1,
+  .popup-content .col2 {
+    max-width: 85%;
+  }
+
+  .col2 {
+    padding: 25px 15px;
+  }
+}
+
 .popup-text {
   background-image: url("assets/svg/popup/popup-logo.svg");
   background-repeat: no-repeat;
@@ -2198,6 +2223,12 @@ button:focus {
   letter-spacing: 0;
 }
 
+@media (max-width: 420px) {
+  .popup-title {
+    font-size: 32px;
+  }
+}
+
 .popup-text p {
   padding-bottom: 10px;
   border-bottom: 3px solid var(--dark-red);
@@ -2208,6 +2239,12 @@ button:focus {
 .datetime {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 420px) {
+  .datetime {
+    flex-direction: column;
+  }
 }
 
 .order-form .datetime input,
@@ -2228,6 +2265,12 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .order-form .datetime input {
+    background-position: 15px, 325px;
+  }
+}
+
 .order-form input::placeholder {
   color: #000000;
 }
@@ -2239,6 +2282,12 @@ button:focus {
 @media (max-width: 768px) {
   .order-form .datetime input {
     width: 40%;
+  }
+}
+
+@media (max-width: 420px) {
+  .order-form .datetime input {
+    width: 88%;
   }
 }
 
@@ -2254,6 +2303,12 @@ button:focus {
   background-image: url("assets/svg/popup/time.svg"), url("assets/svg/popup/arrow.svg");
 }
 
+@media (max-width: 420px) {
+  .order-form .datetime .time {
+    margin-top: 20px;
+  }
+}
+
 .form-input {
   display: inline-block;
   width: 90%;
@@ -2263,6 +2318,12 @@ button:focus {
 @media (max-width: 768px) {
   .form-input {
     width: 92%;
+  }
+}
+
+@media (max-width: 420px) {
+  .form-input {
+    width: 88%;
   }
 }
 
@@ -2396,6 +2457,13 @@ button:focus {
   top: 0;
 }
 
+@media (max-width: 420px) {
+  .overview img {
+    width: 37%;
+    height: auto;
+  }
+}
+
 .prices {
   display: flex;
   flex-direction: column;
@@ -2441,6 +2509,15 @@ button:focus {
   font-size: 12px;
 }
 
+@media (max-width: 420px) {
+  .card .card-front,
+  .card .card-back {
+    position: static;
+    max-width: 330px;
+    max-height: 209px;
+  }
+}
+
 .card-front {
   background-color: #bcbcbc;
   position: absolute;
@@ -2466,6 +2543,13 @@ button:focus {
   padding-left: 10px;
 }
 
+@media (max-width: 420px) {
+  .card-form{
+    margin: 0;
+    padding: 15px 20px;;
+  }
+}
+
 #cardMonth {
   width: 100px;
   margin-right: 12px;
@@ -2484,6 +2568,12 @@ button:focus {
 
 #cardName {
   width: 320px;
+}
+
+@media (max-width: 420px) {
+  #cardName {
+    width: 100%;
+  }
 }
 
 .visa {
@@ -2511,12 +2601,24 @@ button:focus {
   }
 }
 
+@media (max-width: 420px) {
+  .card-back {
+    margin-left: 0;
+  }
+}
+
 .blackline{
   width: 360px;
   height: 45px;
   background-color:#161615;
   position: absolute;
-  margin-top: 20px;
+  margin-top: 25px;
+}
+
+@media (max-width: 420px) {
+  .blackline {
+    width: 101%;
+  }
 }
 
 .card-back .cvc-cvv {
@@ -2550,6 +2652,12 @@ button:focus {
   font-weight: 400;
   font-size: 22px;
   position: relative;
+}
+
+@media (max-width: 420px) {
+  .book-btn {
+    margin-top: 40px;
+  }
 }
 
 @media (max-width: 768px) {
