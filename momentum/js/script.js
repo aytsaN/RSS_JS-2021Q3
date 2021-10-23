@@ -7,6 +7,8 @@ function setLocalStorage() {
 function getLocalStorage() {
   if(localStorage.getItem('name')) {
     greetingName.value = localStorage.getItem('name');
+  } else {
+    setNamePlaceholder();
   }
   if(localStorage.getItem('city')) {
     city.value = localStorage.getItem('city');
@@ -41,10 +43,10 @@ const greetingContainer = document.querySelector('.greeting-container');
 const greetingText = greetingContainer.querySelector('.greeting');
 
 function getTimeOfDay() {
-  const timeOfDayArr = ['morning', 'afternoon ', 'evening', 'night'];
+  const timeOfDayArr = [ 'night', 'morning', 'afternoon ', 'evening'];
   const date = new Date();
   const hours = date.getHours();
-  const result = timeOfDayArr[Math.trunc(hours / 6) - 1];
+  const result = timeOfDayArr[Math.trunc(hours / 6)];
   return result;
 }
 
@@ -57,12 +59,14 @@ function showGreeting() {
 const greetingName = document.querySelector('.greeting-container .name');
 
 function setNamePlaceholder() {
-  if (!greetingName.value) {
     greetingName.setAttribute('placeholder', '[Enter Name]');
-  }
 }
 
-setNamePlaceholder();
+greetingName.addEventListener('change', function() {
+  if (!this.value) {
+    setNamePlaceholder();
+  }
+});
 
 //-----------------update bg image
 const body = document.body;
@@ -128,7 +132,6 @@ async function getWeather() {
     weatherDescription.textContent = data.weather[0].description;
     wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
     humidity.textContent = `Humidity: ${Math.round(data.main.humidity)}%`;
-
   } catch (error) {
     weatherIcon.className = 'weather-icon owf';
     weatherDescription.textContent = `Error! city not found for "${cityVal}"`;
@@ -141,6 +144,23 @@ async function getWeather() {
 getWeather();
 
 city.addEventListener('change', getWeather);
+
+//-----------------quotes
+const qoute = document.querySelector('.quote');
+const author = document.querySelector('.author');
+
+function getQuotes() {
+  const quotes = 'assets/json/data.json';
+  fetch(quotes)
+    .then(res => res.json())
+    .then(data => {
+      qoute.textContent = `"${data[randomNum].text}"`;
+      author.textContent = data[randomNum].author;
+      console.log(data[randomNum]);
+    });
+}
+getQuotes();
+
 
 // ----------------setTimeout
 function updateMainContext() {
