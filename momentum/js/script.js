@@ -10,14 +10,15 @@ function getLocalStorage() {
   } else {
     setNamePlaceholder();
   }
-  if(localStorage.getItem('city')) {
-    city.value = localStorage.getItem('city');
-  } else {
-    city.value = 'Minsk';
-  }
+
+  city.value = localStorage.getItem('city').trim() ?
+    localStorage.getItem('city') :
+    city.value = 'Minsk'
 }
+
 window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
+window.addEventListener('load', getWeather);
 
 // ----------------date
 const date = document.querySelector('.date');
@@ -120,11 +121,17 @@ const humidity = weatherBlock.querySelector('.humidity');
 const city = weatherBlock.querySelector('.city');
 
 async function getWeather() {
-  const cityVal = city.value || localStorage.getItem('city') || 'Minsk';
+  let cityVal = city.value.trim();
+
+  if (!cityVal) {
+    city.setAttribute('placeholder', '[Enter City]');
+    city.value = '';
+  }
+
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&lang=en&appid=${apiKey}&units=metric`;
+  const res = await fetch(url);
 
   try {
-    const res = await fetch(url);
     const data = await res.json();
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
@@ -134,14 +141,12 @@ async function getWeather() {
     humidity.textContent = `Humidity: ${Math.round(data.main.humidity)}%`;
   } catch (error) {
     weatherIcon.className = 'weather-icon owf';
-    weatherDescription.textContent = `Error! city not found for "${cityVal}"`;
+    weatherDescription.textContent = `ERROR: the location not found!`;
     temperature.textContent = ``;
     wind.textContent = ``;
     humidity.textContent = ``;
  }
 }
-
-getWeather();
 
 city.addEventListener('change', getWeather);
 
