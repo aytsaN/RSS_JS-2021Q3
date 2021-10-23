@@ -1,3 +1,22 @@
+//-----------------localStorage
+function setLocalStorage() {
+  localStorage.setItem('name', greetingName.value);
+  localStorage.setItem('city', city.value);
+}
+
+function getLocalStorage() {
+  if(localStorage.getItem('name')) {
+    greetingName.value = localStorage.getItem('name');
+  }
+  if(localStorage.getItem('city')) {
+    city.value = localStorage.getItem('city');
+  } else {
+    city.value = 'Minsk';
+  }
+}
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
+
 // ----------------date
 const date = document.querySelector('.date');
 
@@ -33,6 +52,17 @@ function showGreeting() {
   const timeOfDay = getTimeOfDay();
   greetingText.textContent = `Good ${timeOfDay}`;
 }
+
+//-----------------greeting name
+const greetingName = document.querySelector('.greeting-container .name');
+
+function setNamePlaceholder() {
+  if (!greetingName.value) {
+    greetingName.setAttribute('placeholder', '[Enter Name]');
+  }
+}
+
+setNamePlaceholder();
 
 //-----------------update bg image
 const body = document.body;
@@ -73,6 +103,44 @@ function getSlidePrev() {
 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
+
+//-----------------weather
+const apiKey = 'dc9ee2d06a07955c9a79a313d609954f';
+
+const weatherBlock = document.querySelector('.weather');
+const weatherIcon = weatherBlock.querySelector('.weather-icon');
+const temperature = weatherBlock.querySelector('.temperature');
+const weatherDescription = weatherBlock.querySelector('.weather-description');
+const wind = weatherBlock.querySelector('.wind');
+const humidity = weatherBlock.querySelector('.humidity');
+const city = weatherBlock.querySelector('.city');
+
+async function getWeather() {
+  const cityVal = city.value || localStorage.getItem('city') || 'Minsk';
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&lang=en&appid=${apiKey}&units=metric`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    weatherIcon.className = 'weather-icon owf';
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${Math.floor(data.main.temp)}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+    humidity.textContent = `Humidity: ${Math.round(data.main.humidity)}%`;
+
+  } catch (error) {
+    weatherIcon.className = 'weather-icon owf';
+    weatherDescription.textContent = `Error! city not found for "${cityVal}"`;
+    temperature.textContent = ``;
+    wind.textContent = ``;
+    humidity.textContent = ``;
+ }
+}
+
+getWeather();
+
+city.addEventListener('change', getWeather);
 
 // ----------------setTimeout
 function updateMainContext() {
