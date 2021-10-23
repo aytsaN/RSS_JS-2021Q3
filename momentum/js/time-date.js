@@ -17,10 +17,29 @@ function showTime() {
   time.textContent = currentTime;
 }
 
-function updateDateTime() {
-  showDate();
-  showTime()
-  setTimeout(updateDateTime, 1000);
+// ----------------greeting
+const greetingContainer = document.querySelector('.greeting-container');
+const greetingText = greetingContainer.querySelector('.greeting');
+
+function getTimeOfDay() {
+  const timeOfDayArr = ['Morning', 'Day', 'Evening', 'Night'];
+  const date = new Date();
+  const hours = date.getHours();
+  const result = timeOfDayArr[Math.trunc(hours / 6) - 1];
+  return result;
 }
 
-updateDateTime();
+function showGreeting() {
+  const timeOfDay = getTimeOfDay();
+  greetingText.textContent = `Good ${timeOfDay}`;
+}
+
+// ----------------setTimeout
+function updateMainContext() {
+  showDate();
+  showTime()
+  showGreeting();
+  setTimeout(updateMainContext, 1000);
+}
+
+updateMainContext();
