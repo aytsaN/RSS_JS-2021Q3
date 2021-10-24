@@ -1,3 +1,10 @@
+//-----------------num randomizer
+function getRandomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 //-----------------localStorage
 function setLocalStorage() {
   localStorage.setItem('name', greetingName.value);
@@ -71,17 +78,11 @@ greetingName.addEventListener('change', function() {
 
 //-----------------update bg image
 const body = document.body;
-let randomNum = 1;
-
-function getRandomNum(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-}
+let randomBGNum = getRandomNum(1, 20) || 1;
 
 function setBg() {
   const timeOfDay = getTimeOfDay();
-  const bgNum = randomNum.toString();
+  const bgNum = randomBGNum.toString();
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.padStart(2, '0')}.jpg`;
   img.onload = () => {
@@ -89,7 +90,6 @@ function setBg() {
   };
 }
 
-getRandomNum(1, 20);
 setBg();
 
 //----------------slide bg
@@ -97,12 +97,12 @@ const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
 
 function getSlideNext() {
-  randomNum < 20 ? randomNum++ : randomNum = 1;
+  randomBGNum < 20 ? randomBGNum++ : randomBGNum = 1;
   setBg();
 }
 
 function getSlidePrev() {
-  randomNum > 1 ? randomNum-- : randomNum = 20;
+  randomBGNum > 1 ? randomBGNum-- : randomBGNum = 20;
   setBg();
 }
 
@@ -153,19 +153,26 @@ city.addEventListener('change', getWeather);
 //-----------------quotes
 const qoute = document.querySelector('.quote');
 const author = document.querySelector('.author');
+const changeQuoteIco = document.querySelector('.change-quote');
 
 function getQuotes() {
   const quotes = 'assets/json/data.json';
+
   fetch(quotes)
     .then(res => res.json())
     .then(data => {
-      qoute.textContent = `"${data[randomNum].text}"`;
-      author.textContent = data[randomNum].author;
-      console.log(data[randomNum]);
+      let randomQuoteNum = getRandomNum(1, data.length - 1);
+      qoute.textContent = `"${data[randomQuoteNum].text}"`;
+      author.textContent = data[randomQuoteNum].author || 'author is unknown, but the quote is coool';
+    })
+    .catch(err => {
+      qoute.textContent = `No quotes for today`;
+      author.textContent = `¯\\_(ツ)_/¯`;
     });
 }
 getQuotes();
 
+changeQuoteIco.addEventListener('click', getQuotes);
 
 // ----------------setTimeout
 function updateMainContext() {
