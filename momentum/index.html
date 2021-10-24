@@ -11,10 +11,23 @@
 <body>
   <header class="header">
     <div class="player">
-      <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
+      <div class="player-info">
+        <div class="player-controls">
+          <button class="play-prev player-icon"></button>
+          <button class="play player-icon"></button>
+          <button class="play-next player-icon"></button>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressRange" min="0" max="100" step="1" value="0" data-content="">
+          <div class="duration-time">
+            <div class="timer">00:00</div>
+            <div class="duration">00:00</div>
+          </div>
+        </div>
+        <div class="volume">
+          <div class="volume-icon"></div>
+          <input type="range" id="soundVoulume" min="0" max="1" step="0.1" value="0.6">
+        </div>
       </div>
       <ul class="play-list"></ul>
     </div>
@@ -49,6 +62,7 @@
       <div class="author"></div>
     </div>
   </footer>
-  <script src="js/script.js"></script>
+  <script type="module" src="js/script.js"></script>
+  <script type="module" src="js/audioplayer.js"></script>
 </body>
 </html>

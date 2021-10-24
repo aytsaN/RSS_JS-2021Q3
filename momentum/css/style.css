@@ -32,15 +32,30 @@ body {
   padding: 20px;
 }
 
+.player {
+  width: 50%;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  column-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
-  margin-bottom: 28px;
+  min-width: 120px;
+  width: 10%;
 }
 
 .play-list {
+  width: 50%;
   text-align: left;
 }
 
@@ -59,20 +74,27 @@ body {
 }
 
 .play-item::before {
-  content: "\2713";
+  content: " ";
   position: absolute;
   left: 0;
   top: 2px;
+  width: 20px;
+  height: 27px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-image: url("../assets/svg/tiny-play.svg");
   font-weight: 900;
 }
 
 .item-active::before {
-  color: #C5B358;
+  background-image: url("../assets/svg/tiny-pause.svg");
 }
 
 .player-icon,
 .slider-icon,
-.change-quote {
+.change-quote,
+.volume-icon {
   width: 32px;
   height: 32px;
   background-size: 32px 32px;
@@ -88,13 +110,15 @@ body {
 
 .player-icon:hover,
 .slider-icon:hover,
-.change-quote:hover {
+.change-quote:hover,
+.volume-icon:hover {
   opacity: 1;
 }
 
 .player-icon:active,
 .slider-icon:active,
-.change-quote:active {
+.change-quote:active,
+.volume-icon:active {
   border: 0;
   outline: 0;
   transform: scale(1.1);
@@ -117,6 +141,77 @@ body {
 
 .play-next {
   background-image: url("../assets/svg/play-next.svg");
+}
+
+input[type="range"] {
+  appearance: none;
+  height: 6px;
+  border-radius: 50px;
+  background: linear-gradient(to right ,#fff 0%, #fff 0%, rgba(255, 255, 255, .6) 0%, rgba(255, 255, 255, .6) 100%);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  appearance: none;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  width: 65%;
+}
+
+#progressRange {
+  position: relative;
+  width: 85%;
+}
+
+#progressRange::before {
+  content: attr(data-content);
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  font-size: 16px;
+  color: #fff;
+  opacity: .9;
+}
+
+.duration-time {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  opacity: .8;
+}
+
+.timer::after {
+  content: ' / ';
+  font-size: 16px;
+  white-space: pre;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+.volume-icon {
+  width: 32px;
+  height: 45px;
+  background-image: url("../assets/svg/volume-high.svg");
+  background-position-y: bottom;
+}
+
+.volume-icon.mute {
+  background-image: url("../assets/svg/volume-mute.svg");
+}
+
+#soundVoulume {
+  width: 70%;
 }
 
 .weather {

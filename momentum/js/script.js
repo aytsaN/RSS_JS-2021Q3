@@ -51,7 +51,7 @@ const greetingContainer = document.querySelector('.greeting-container');
 const greetingText = greetingContainer.querySelector('.greeting');
 
 function getTimeOfDay() {
-  const timeOfDayArr = [ 'night', 'morning', 'afternoon ', 'evening'];
+  const timeOfDayArr = [ 'night', 'morning', 'afternoon', 'evening'];
   const date = new Date();
   const hours = date.getHours();
   const result = timeOfDayArr[Math.trunc(hours / 6)];
@@ -60,7 +60,7 @@ function getTimeOfDay() {
 
 function showGreeting() {
   const timeOfDay = getTimeOfDay();
-  greetingText.textContent = `Good ${timeOfDay}`;
+  greetingText.textContent = `Good ${timeOfDay},`;
 }
 
 //-----------------greeting name
@@ -78,7 +78,7 @@ greetingName.addEventListener('change', function() {
 
 //-----------------update bg image
 const body = document.body;
-let randomBGNum = getRandomNum(1, 20) || 1;
+let randomBGNum = getRandomNum(1, 20);
 
 function setBg() {
   const timeOfDay = getTimeOfDay();
