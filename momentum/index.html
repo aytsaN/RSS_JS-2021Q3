@@ -13,9 +13,9 @@
     <div class="player">
       <div class="player-info">
         <div class="player-controls">
-          <button class="play-prev player-icon"></button>
-          <button class="play player-icon"></button>
-          <button class="play-next player-icon"></button>
+          <button class="play-prev player-icon icon"></button>
+          <button class="play player-icon icon"></button>
+          <button class="play-next player-icon icon"></button>
         </div>
         <div class="progress">
           <input type="range" id="progressRange" min="0" max="100" step="1" value="0" data-content="">
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="volume">
-          <div class="volume-icon"></div>
+          <div class="volume-icon icon"></div>
           <input type="range" id="soundVoulume" min="0" max="1" step="0.1" value="0.6">
         </div>
       </div>
@@ -45,8 +45,8 @@
   </header>
   <main class="main">
     <div class="slider-icons">
-      <button class="slide-prev slider-icon"></button>
-      <button class="slide-next slider-icon"></button>
+      <button class="slide-prev slider-icon icon"></button>
+      <button class="slide-next slider-icon icon"></button>
     </div>
     <time class="time"></time>
     <date class="date"></date>
@@ -56,12 +56,24 @@
     </div>
   </main>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <div class="info-container">
+      <span class="settings-icon icon"></span>
+      <a href="https://rs.school/js/" class="rss-link" target="_blank">
+        <img src="assets/svg/rs_school_js.svg" alt="RSS" class="rss-ico" width="50" height="50">
+      </a>
+      <div class="copy">© 2021 by <a href="https://github.com/aytsaN">aytsaN</a></div>
+    </div>
+    <div class="quote-container">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
     </div>
   </footer>
+  <div class="settings-app">
+
+  </div>
   <script type="module" src="js/script.js"></script>
   <script type="module" src="js/audioplayer.js"></script>
 </body>

@@ -183,3 +183,20 @@ function updateMainContext() {
 }
 
 updateMainContext();
+
+//----------------settings
+const state = {
+  'Language': 'en',
+  'Photo Source': 'github',
+  'Blocks': ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
+};
+
+
+const settingsBtn = document.querySelector('.settings-icon');
+
+function toggleSettings() {
+  this.classList.toggle('settings-open');
+}
+
+settingsBtn.addEventListener('click', toggleSettings);
+
