@@ -20,12 +20,14 @@ function getLocalStorage() {
 
   city.value = localStorage.getItem('city').trim() ?
     localStorage.getItem('city') :
-    city.value = 'Minsk'
+    city.value = 'Minsk';
 }
 
 window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('beforeunload', setUserSettings);
 window.addEventListener('load', getLocalStorage);
 window.addEventListener('load', getWeather);
+window.addEventListener('load', getUserSettings);
 
 // ----------------date
 const date = document.querySelector('.date');
@@ -185,15 +187,55 @@ function updateMainContext() {
 updateMainContext();
 
 //----------------settings
-const state = {
-  'Language': 'en',
-  'Photo Source': 'github',
-  'Blocks': ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
-};
 
+function isEmptyObject(obj) {
+  for (var property in obj) {
+      if (obj.hasOwnProperty(property)) return false;
+  }
+  return true;
+}
+
+function toggleSlider(appName) {
+  const checkbox = document.querySelector(`input[name="${appName}"]`);
+  const slider = checkbox.parentElement;
+
+  if (!checkbox.checked) {
+    checkbox.checked = true;
+    slider.classList.add('on');
+  } else {
+    checkbox.checked = false;
+    slider.classList.remove('on');
+  }
+  console.log(slider);
+}
+
+function toggleApps(activeApps) {
+  activeApps.forEach(app => {
+    document.querySelector(`[data-app-name="${app}"]`).classList.remove('hide');
+    toggleSlider(app);
+  });
+
+}
+
+function getUserSettings() {
+  const defaultSettings = {
+    'language': 'en',
+    'bgSource': 'github',
+    'apps': ['time', 'date', 'greeting', 'quote', 'weather', 'player']
+  };
+
+  const userSettings = JSON.parse(localStorage.getItem('settings'));
+
+  const state = isEmptyObject(userSettings) ? defaultSettings : userSettings;
+
+  toggleApps(state.apps);
+}
 
 const settingsBtn = document.querySelector('.settings-icon');
 const settingsContainer = document.querySelector('.settings-app');
+
+const appsListSettingsContainer = document.querySelector('.apps-list');
+const appsCheckboxArr = document.querySelectorAll(('.apps-list input[type="checkbox"]'));
 
 function toggleSettings() {
   this.classList.toggle('settings-open');
@@ -201,4 +243,48 @@ function toggleSettings() {
 }
 
 settingsBtn.addEventListener('click', toggleSettings);
+
+function hideApp(appName) {
+  const app = document.querySelector(`[data-app-name=${appName}]`);
+  app.classList.toggle('hide');
+}
+
+appsListSettingsContainer.addEventListener('click', function(event) {
+  const li = event.target.closest('li');
+  if (!li || !appsListSettingsContainer.contains(li)) return;
+  const checkbox = li.children[0];
+  toggleSlider(checkbox.name);
+  hideApp(checkbox.name);
+})
+
+function setUserSettings() {
+  const state = {
+    'language': 'en',
+    'bgSource': 'github',
+    'apps': []
+  };
+  appsCheckboxArr.forEach(checkbox => {
+    if (checkbox.checked) {
+      state.apps.push(checkbox.name);
+    }
+  });
+  localStorage.setItem('settings', JSON.stringify(state));
+}
+
+body.addEventListener('click', (e) => {
+  if (e.target.closest('.settings-app') || e.target.closest('.settings-icon')) return;
+  if (!settingsContainer.classList.contains('hide')) {
+    settingsContainer.classList.add('hide');
+  }
+});
+
+function init() {
+  document.querySelectorAll('.none').forEach(el => {
+    el.classList.remove('none');
+  })
+}
+
+window.addEventListener('load', init);
+
+
 

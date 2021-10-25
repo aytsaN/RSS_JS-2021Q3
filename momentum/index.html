@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="header">
-    <div class="player">
+    <div class="player hide none" data-app-name="player">
       <div class="player-info">
         <div class="player-controls">
           <button class="play-prev player-icon icon"></button>
@@ -31,7 +31,7 @@
       </div>
       <ul class="play-list"></ul>
     </div>
-    <div class="weather">
+    <div class="weather hide none" data-app-name="weather">
       <input type="text" class="city" />
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
@@ -48,9 +48,9 @@
       <button class="slide-prev slider-icon icon"></button>
       <button class="slide-next slider-icon icon"></button>
     </div>
-    <time class="time"></time>
-    <date class="date"></date>
-    <div class="greeting-container">
+    <time class="time hide none" data-app-name="time"></time>
+    <date class="date hide none" data-app-name="date"></date>
+    <div class="greeting-container hide none" data-app-name="greeting">
       <span class="greeting"></span>
       <input type="text" class="name"/>
     </div>
@@ -63,7 +63,7 @@
       </a>
       <div class="copy">© 2021 by <a href="https://github.com/aytsaN" target="_blank">aytsaN</a></div>
     </div>
-    <div class="quote-container">
+    <div class="quote-container hide none" data-app-name="quote">
       <button class="change-quote icon"></button>
       <div>
         <div class="quote"></div>
@@ -71,15 +71,77 @@
       </div>
     </div>
   </footer>
-  <div class="settings-app hide">
+  <div class="settings-app hide none">
     <div class="settings-header">
-      <h3 data-test="general-header">General</h3>
+      <h3 data-test="general-header">General Settings</h3>
       <p class="description">Customize your dashboard</p>
     </div>
     <h4>Show</h4>
-    <!-- language -->
+    <ul class="apps-list settings-list">
+      <li class="slide-toggle">
+        <input type="checkbox" name="time">
+        <span class="setting-name">Time</span>
+        <span class="toggle-slider">
+          <svg class="toggle-switch" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+        </span>
+      </li>
+      <li class="slide-toggle">
+        <input type="checkbox" name="date">
+        <span class="setting-name">Date</span>
+        <span class="toggle-slider">
+          <svg class="toggle-switch" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+        </span>
+      </li>
+      <li class="slide-toggle">
+        <input type="checkbox" name="greeting">
+        <span class="setting-name">Greeting</span>
+        <span class="toggle-slider">
+          <svg class="toggle-switch" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+        </span>
+      </li>
+      <li class="slide-toggle">
+        <input type="checkbox" name="quote">
+        <span class="setting-name">Quote</span>
+        <span class="toggle-slider">
+          <svg class="toggle-switch" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+        </span>
+      </li>
+      <li class="slide-toggle">
+        <input type="checkbox" name="weather">
+        <span class="setting-name">Weather</span>
+        <span class="toggle-slider">
+          <svg class="toggle-switch" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+        </span>
+      </li>
+      <li class="slide-toggle">
+        <input type="checkbox" name="player">
+        <span class="setting-name">Player</span>
+        <span class="toggle-slider">
+          <svg class="toggle-switch" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+        </span>
+      </li>
+    </ul>
     <h4>Appearance</h4>
-    <h4>Background source</h4>
+    <ul class="customize-list settings-list">
+      <li class="slide-toggle custom-lang-toggle">
+        <span class="setting-name">Language</span>
+        <span class="toggle-options">
+          <span class="toggle-option balance-shortcut active" data-shortcut="en"><span class="toggle-label">English</span></span>
+          <span class="toggle-divider">|</span>
+          <span class="toggle-option balance-shortcut" data-shortcut="ru"><span class="toggle-label">Russian</span></span>
+        </span>
+      </li>
+      <li class="slide-toggle custom-bg-toggle">
+        <span class="setting-name">Background source</span>
+        <span class="toggle-options">
+          <span class="toggle-option balance-shortcut active" data-shortcut="github"><span class="toggle-label">GitHub</span></span>
+          <span class="toggle-divider">|</span>
+          <span class="toggle-option balance-shortcut" data-shortcut="unsplash"><span class="toggle-label">Unsplash API</span></span>
+          <span class="toggle-divider">|</span>
+          <span class="toggle-option balance-shortcut" data-shortcut="flickr"><span class="toggle-label">Flickr API</span></span>
+        </span>
+      </li>
+    </ul>
   </div>
   <script type="module" src="js/script.js"></script>
   <script type="module" src="js/audioplayer.js"></script>
