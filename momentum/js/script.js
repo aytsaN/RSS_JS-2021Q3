@@ -1,5 +1,8 @@
+const body = document.body;
+
 let userLanguage;
 let bgSource;
+
 const localization = {
   'en' : {
     'greeting' : {
@@ -269,6 +272,8 @@ async function getBgImgUrl(timeOfDay, bgNum, source) {
     return githubImgUrl;
   } else if (source === 'flickr') {
     const flickrUrl = `https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=${apiFlickrKey}&gallery_id=${flickrGalleryIds[timeOfDay]}&format=json&nojsoncallback=1`;
+    // const flickrUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiFlickrKey}&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+
     const res = await fetch(flickrUrl);
     const data = await res.json();
     const galery = data['photos']['photo'];
@@ -281,16 +286,21 @@ async function getBgImgUrl(timeOfDay, bgNum, source) {
   } else {
     const unsplashUrl = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature-${timeOfDay}&client_id=${apiUnsplashKey}`;
     const res = await fetch(unsplashUrl);
-    const data = await res.json();
-    const unsplashImgUrl = data.urls.regular;
-    return unsplashImgUrl;
+    try {
+      const data = await res.json();
+      const unsplashImgUrl = data.urls.regular;
+      return unsplashImgUrl;
+    } catch (err) {
+      console.error('Attempts number has been exceeded');
+      console.info('Attempts number has been exceeded. The default resource is used: GitHub');
+      setBgSource('github');
+      setBg();
+      toggleOption('github');
+    }
   }
 }
 
-
-const body = document.body;
 let randomBGNum = getRandomNum(1, 20);
-
 
 function setBg() {
   const timeOfDay = getTimeOfDay();
@@ -298,7 +308,6 @@ function setBg() {
   const img = new Image();
   getBgImgUrl(timeOfDay, bgNum, bgSource).then(res => {
     img.src = res;
-    console.log('imgsrc', img.src, bgSource);
     img.onload = () => {
       body.style.backgroundImage = `url("${img.src}"`;
     };
@@ -536,7 +545,6 @@ optionsArr.forEach(options => {
     if (optionEl.closest('.custom-bg-toggle')) {
       setBgSource(optionEl.getAttribute('data-option'));
       setBg();
-      // updateLocaization(optionEl.parentNode.querySelector('.active').getAttribute('data-option'));
     }
 
     toggleOption(optionEl.getAttribute('data-option'));
