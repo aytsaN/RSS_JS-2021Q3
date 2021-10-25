@@ -254,6 +254,7 @@ greetingName.addEventListener('change', function() {
 
 //-----------------update bg image
 const apiFlickrKey = '1a2e3bbc4f21d2e9afc0d8c9dbeda606';
+const apiUnsplashKey = 'pSZteTWkoWLLKRDETXV9U2frbEwL-0JzrcYKubZaV3c';
 
 const flickrGalleryIds = {
   'night': '72157720062587146',
@@ -264,8 +265,8 @@ const flickrGalleryIds = {
 
 async function getBgImgUrl(timeOfDay, bgNum, source) {
   if (source === 'github') {
-    const githubUrl = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.padStart(2, '0')}.jpg`;
-    return githubUrl;
+    const githubImgUrl = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.padStart(2, '0')}.jpg`;
+    return githubImgUrl;
   } else if (source === 'flickr') {
     const flickrUrl = `https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=${apiFlickrKey}&gallery_id=${flickrGalleryIds[timeOfDay]}&format=json&nojsoncallback=1`;
     const res = await fetch(flickrUrl);
@@ -275,9 +276,14 @@ async function getBgImgUrl(timeOfDay, bgNum, source) {
     const serverId = galery[bgNum]['server'];
     const id = galery[bgNum]['id'];
     const secret = galery[bgNum]['secret'];
-    return `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
+    const flickrImgUrl = `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`
+    return flickrImgUrl;
   } else {
-    
+    const unsplashUrl = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature-${timeOfDay}&client_id=${apiUnsplashKey}`;
+    const res = await fetch(unsplashUrl);
+    const data = await res.json();
+    const unsplashImgUrl = data.urls.regular;
+    return unsplashImgUrl;
   }
 }
 
