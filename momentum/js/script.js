@@ -1,3 +1,61 @@
+let userLanguage;
+const localization = {
+  'en' : {
+    'greeting' : {
+      'night' : 'Good Night',
+      'morning' : 'Good Morning',
+      'afternoon' : 'Good Afternoon',
+      'evening' : 'Good Evening',
+    },
+    'namePlaceholder' : 'Enter Name',
+    'defaultCity' : 'Minsk',
+    'weather' : {
+      'wind' : {
+        'title' : 'Wind speed',
+        'units' : 'm/s'
+      },
+      'humidity' : {
+        'title' : 'Humidity'
+      },
+      'error' : 'ERROR: the location not found!',
+      'placeholder' : 'Enter City'
+    }
+  },
+  'ru' : {
+    'greeting' : {
+      'night' : 'Доброй ночи',
+      'morning' : 'Доброе утро',
+      'afternoon' : 'Добрый день',
+      'evening' : 'Добрый вечер',
+    },
+    'namePlaceholder' : 'Введите имя',
+    'defaultCity' : 'Минск',
+    'weather' : {
+      'wind' : {
+        'title' : 'Скорость ветра',
+        'units' : 'м/с'
+      },
+      'humidity' : {
+        'title' : 'Влажность'
+      },
+      'error' : 'ОШИБКА: локация не найдена!',
+      'placeholder' : 'Введите город'
+    }
+  }
+}
+
+function setLoacalization(lang) {
+  userLanguage = lang;
+}
+
+function updateLocaization() {
+  city.value = localization[userLanguage]['defaultCity'];
+  getWeather();
+  updateMainContext();
+  if (!greetingName.value) setNamePlaceholder();
+  getQuotes();
+}
+
 //-----------------num randomizer
 function getRandomNum(min, max) {
   min = Math.ceil(min);
@@ -18,16 +76,21 @@ function getLocalStorage() {
     setNamePlaceholder();
   }
 
-  city.value = localStorage.getItem('city').trim() ?
-    localStorage.getItem('city') :
-    city.value = 'Minsk';
+  const userCity = localStorage.getItem('city');
+
+  if (userCity) {
+    if (userCity.trim()) city.value = userCity.trim();
+  } else {
+    city.value = localization[userLanguage]['defaultCity'];
+  }
 }
 
-window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('beforeunload', setUserSettings);
-window.addEventListener('load', getLocalStorage);
-window.addEventListener('load', getWeather);
+window.addEventListener('beforeunload', setLocalStorage);
+
 window.addEventListener('load', getUserSettings);
+window.addEventListener('load', getLocalStorage);
+
 
 // ----------------date
 const date = document.querySelector('.date');
@@ -35,7 +98,7 @@ const date = document.querySelector('.date');
 function showDate() {
   const dateObj = new Date();
   const options = {month: 'long', weekday: 'long', day: 'numeric'};
-  const currentDate = dateObj.toLocaleDateString(undefined, options);
+  const currentDate = dateObj.toLocaleDateString(userLanguage, options);
   date.textContent = `${currentDate}`;
 }
 
@@ -62,14 +125,15 @@ function getTimeOfDay() {
 
 function showGreeting() {
   const timeOfDay = getTimeOfDay();
-  greetingText.textContent = `Good ${timeOfDay},`;
+  // greetingText.textContent = `Good ${timeOfDay},`;
+  greetingText.textContent = `${localization[userLanguage]['greeting'][timeOfDay]},`;
 }
 
 //-----------------greeting name
 const greetingName = document.querySelector('.greeting-container .name');
 
 function setNamePlaceholder() {
-    greetingName.setAttribute('placeholder', '[Enter Name]');
+  greetingName.setAttribute('placeholder', `[${localization[userLanguage]['namePlaceholder']}]`);
 }
 
 greetingName.addEventListener('change', function() {
@@ -126,11 +190,11 @@ async function getWeather() {
   let cityVal = city.value.trim();
 
   if (!cityVal) {
-    city.setAttribute('placeholder', '[Enter City]');
+    city.setAttribute('placeholder', `[${localization[userLanguage]['weather']['placeholder']}]`);
     city.value = '';
   }
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&lang=en&appid=${apiKey}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&lang=${userLanguage}&appid=${apiKey}&units=metric`;
   const res = await fetch(url);
 
   try {
@@ -139,11 +203,11 @@ async function getWeather() {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.floor(data.main.temp)}°C`;
     weatherDescription.textContent = data.weather[0].description;
-    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
-    humidity.textContent = `Humidity: ${Math.round(data.main.humidity)}%`;
+    wind.textContent = `${localization[userLanguage]['weather']['wind']['title']}: ${Math.round(data.wind.speed)} ${localization[userLanguage]['weather']['wind']['units']}`;
+    humidity.textContent = `${localization[userLanguage]['weather']['humidity']['title']}: ${Math.round(data.main.humidity)}%`;
   } catch (error) {
     weatherIcon.className = 'weather-icon owf';
-    weatherDescription.textContent = `ERROR: the location not found!`;
+    weatherDescription.textContent = `${localization[userLanguage]['weather']['error']}`;
     temperature.textContent = ``;
     wind.textContent = ``;
     humidity.textContent = ``;
@@ -158,7 +222,7 @@ const author = document.querySelector('.author');
 const changeQuoteIco = document.querySelector('.change-quote');
 
 function getQuotes() {
-  const quotes = 'assets/json/data.json';
+  const quotes = `assets/json/quotes_${userLanguage}.json`;
 
   fetch(quotes)
     .then(res => res.json())
@@ -172,7 +236,7 @@ function getQuotes() {
       author.textContent = `¯\\_(ツ)_/¯`;
     });
 }
-getQuotes();
+
 
 changeQuoteIco.addEventListener('click', getQuotes);
 
@@ -183,8 +247,6 @@ function updateMainContext() {
   showGreeting();
   setTimeout(updateMainContext, 1000);
 }
-
-updateMainContext();
 
 //----------------settings
 
@@ -214,7 +276,14 @@ function toggleApps(activeApps) {
     document.querySelector(`[data-app-name="${app}"]`).classList.remove('hide');
     toggleSlider(app);
   });
+}
 
+function toggleOption(optionValue) {
+  const oldOption = document.querySelector(`[data-option="${optionValue}"]`).parentNode.querySelector('.active');
+  const newOption = document.querySelector(`[data-option="${optionValue}"]`);
+  console.log(oldOption);
+  if (oldOption) oldOption.classList.remove('active');
+  newOption.classList.add('active');
 }
 
 function getUserSettings() {
@@ -229,6 +298,10 @@ function getUserSettings() {
   const state = isEmptyObject(userSettings) ? defaultSettings : userSettings;
 
   toggleApps(state.apps);
+  toggleOption(state.language);
+  toggleOption(state.bgSource);
+
+  setLoacalization(state.language);
 }
 
 const settingsBtn = document.querySelector('.settings-icon');
@@ -236,9 +309,10 @@ const settingsContainer = document.querySelector('.settings-app');
 
 const appsListSettingsContainer = document.querySelector('.apps-list');
 const appsCheckboxArr = document.querySelectorAll(('.apps-list input[type="checkbox"]'));
+const optionsArr = document.querySelectorAll(('.toggle-options'));
 
 function toggleSettings() {
-  this.classList.toggle('settings-open');
+  settingsBtn.classList.toggle('settings-open');
   settingsContainer.classList.toggle('hide');
 }
 
@@ -258,9 +332,11 @@ appsListSettingsContainer.addEventListener('click', function(event) {
 })
 
 function setUserSettings() {
+  const userLang = document.querySelector('.custom-lang-toggle .active').getAttribute('data-option');
+  const userBgSource = document.querySelector('.custom-bg-toggle .active').getAttribute('data-option');
   const state = {
-    'language': 'en',
-    'bgSource': 'github',
+    'language': userLang,
+    'bgSource': userBgSource,
     'apps': []
   };
   appsCheckboxArr.forEach(checkbox => {
@@ -274,14 +350,37 @@ function setUserSettings() {
 body.addEventListener('click', (e) => {
   if (e.target.closest('.settings-app') || e.target.closest('.settings-icon')) return;
   if (!settingsContainer.classList.contains('hide')) {
-    settingsContainer.classList.add('hide');
+    toggleSettings();
   }
 });
+
+optionsArr.forEach(options => {
+  options.addEventListener('click', (e) => {
+  const optionEl = e.target.closest('.toggle-option');
+  if (!optionEl) return;
+  if (optionEl.classList.contains('active')) return;
+  toggleOption(optionEl.getAttribute('data-option'));
+
+    if (optionEl.closest('.custom-lang-toggle')) {
+      setLoacalization(optionEl.getAttribute('data-option'));
+      updateLocaization();
+    }
+  })
+})
+
+
+
+
+
+
 
 function init() {
   document.querySelectorAll('.none').forEach(el => {
     el.classList.remove('none');
-  })
+  });
+  getWeather();
+  updateMainContext();
+  getQuotes();
 }
 
 window.addEventListener('load', init);

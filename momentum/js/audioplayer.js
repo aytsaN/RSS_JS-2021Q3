@@ -130,6 +130,7 @@ audio.addEventListener('ended', playNextAudio);
 audio.addEventListener('timeupdate', updateProgress);
 
 progressRange.addEventListener('input', function() {
+  if (!audio.currentTime) return;
   audio.currentTime = (this.value * audio.duration) / 100;
   updateProgress();
 });

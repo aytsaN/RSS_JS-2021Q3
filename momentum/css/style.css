@@ -469,12 +469,20 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .toggle-options {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(34, 34, 34, .5);
 }
 
 .toggle-option {
   font-weight: 600;
+}
+
+.toggle-option:hover {
+  color: rgba(34, 34, 34, .8);
+}
+
+.toggle-option:active {
+  color: rgba(34, 34, 34, .9);
 }
 
 .toggle-option.active {
