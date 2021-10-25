@@ -274,9 +274,9 @@ const flickrGalleryIds = {
 
 function setDefaultSource() {
   setBgSource('github');
-  setBg();
-  toggleOption('github');
   showTagSettings('github');
+  toggleOption('github');
+  setBg();
 }
 
 
@@ -301,8 +301,8 @@ async function getBgImgUrl(timeOfDay, bgNum, source) {
         const flickrImgUrl = `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
         return flickrImgUrl;
       } catch(err) {
-        console.error('Oooppppss...');
-        console.info('The default resource is used: GitHub');
+        console.error('Oooppppss... Flickr has faced with a problem.');
+        console.info('The default source is used: GitHub');
         setDefaultSource();
       }
 
@@ -316,8 +316,8 @@ async function getBgImgUrl(timeOfDay, bgNum, source) {
       const unsplashImgUrl = data.urls.regular;
       return unsplashImgUrl;
     } catch(err) {
-      console.error('Attempts number has been exceeded');
-      console.info('Attempts number has been exceeded. The default resource is used: GitHub');
+      console.error('Oooppppss... Unsplash has faced with a problem.');
+      console.info('The default source is used: GitHub');
       setDefaultSource();
     }
   }
@@ -479,6 +479,7 @@ function showTagSettings(source) {
   if (source === 'github') {
     bgTagSlider.classList.add('hide');
     inputTag.value = '';
+    tag = '';
   } else {
     bgTagSlider.classList.remove('hide');
   }
