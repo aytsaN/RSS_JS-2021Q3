@@ -193,9 +193,11 @@ const state = {
 
 
 const settingsBtn = document.querySelector('.settings-icon');
+const settingsContainer = document.querySelector('.settings-app');
 
 function toggleSettings() {
   this.classList.toggle('settings-open');
+  settingsContainer.classList.toggle('hide');
 }
 
 settingsBtn.addEventListener('click', toggleSettings);
