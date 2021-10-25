@@ -72,6 +72,9 @@ const localization = {
             'unsplash' : 'Unsplash API',
             'flickr' : 'Flickr API'
           }
+        },
+        {
+          'name' : 'Add bachground tag'
         }]
       }
     }
@@ -144,6 +147,9 @@ const localization = {
             'unsplash' : 'Unsplash API',
             'flickr' : 'Flickr API'
           }
+        },
+        {
+          'name' : 'Добавить тег для фона'
         }]
       }
     }
@@ -266,36 +272,53 @@ const flickrGalleryIds = {
   'evening': '72157720111880160'
 }
 
+function setDefaultSource() {
+  setBgSource('github');
+  setBg();
+  toggleOption('github');
+  showTagSettings('github');
+}
+
+
 async function getBgImgUrl(timeOfDay, bgNum, source) {
   if (source === 'github') {
     const githubImgUrl = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.padStart(2, '0')}.jpg`;
     return githubImgUrl;
   } else if (source === 'flickr') {
-    const flickrUrl = `https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=${apiFlickrKey}&gallery_id=${flickrGalleryIds[timeOfDay]}&format=json&nojsoncallback=1`;
-    // const flickrUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiFlickrKey}&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+    const flickrUrl = tag ?
+      `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiFlickrKey}&tags=${tag}&extras=url_l&format=json&nojsoncallback=1` :
+      `https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=${apiFlickrKey}&gallery_id=${flickrGalleryIds[timeOfDay]}&format=json&nojsoncallback=1`;
 
-    const res = await fetch(flickrUrl);
-    const data = await res.json();
-    const galery = data['photos']['photo'];
-    const farmId = galery[bgNum]['farm'];
-    const serverId = galery[bgNum]['server'];
-    const id = galery[bgNum]['id'];
-    const secret = galery[bgNum]['secret'];
-    const flickrImgUrl = `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`
-    return flickrImgUrl;
+      const res = await fetch(flickrUrl);
+
+      try {
+        const data = await res.json();
+        const galery = data['photos']['photo'];
+        const farmId = galery[bgNum]['farm'];
+        const serverId = galery[bgNum]['server'];
+        const id = galery[bgNum]['id'];
+        const secret = galery[bgNum]['secret'];
+        const flickrImgUrl = `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
+        return flickrImgUrl;
+      } catch(err) {
+        console.error('Oooppppss...');
+        console.info('The default resource is used: GitHub');
+        setDefaultSource();
+      }
+
   } else {
-    const unsplashUrl = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature-${timeOfDay}&client_id=${apiUnsplashKey}`;
+    const unsplashUrl = tag ?
+      `https://api.unsplash.com/photos/random?orientation=landscape&query=${tag}&client_id=${apiUnsplashKey}` :
+      `https://api.unsplash.com/photos/random?orientation=landscape&query=nature-${timeOfDay}&client_id=${apiUnsplashKey}`;
     const res = await fetch(unsplashUrl);
     try {
       const data = await res.json();
       const unsplashImgUrl = data.urls.regular;
       return unsplashImgUrl;
-    } catch (err) {
+    } catch(err) {
       console.error('Attempts number has been exceeded');
       console.info('Attempts number has been exceeded. The default resource is used: GitHub');
-      setBgSource('github');
-      setBg();
-      toggleOption('github');
+      setDefaultSource();
     }
   }
 }
@@ -411,8 +434,12 @@ const settingsBtn = document.querySelector('.settings-icon');
 const settingsContainer = document.querySelector('.settings-app');
 
 const appsListSettingsContainer = document.querySelector('.apps-list');
-const appsCheckboxArr = document.querySelectorAll(('.apps-list input[type="checkbox"]'));
-const optionsArr = document.querySelectorAll(('.toggle-options'));
+const appsCheckboxArr = document.querySelectorAll('.apps-list input[type="checkbox"]');
+const optionsArr = document.querySelectorAll('.toggle-options');
+
+const bgTagSlider = document.querySelector('.custom-bg-tag-toggle');
+const inputTag = document.querySelector('#bgTag');
+let tag;
 
 function isEmptyObject(obj) {
   for (var property in obj) {
@@ -446,6 +473,15 @@ function toggleOption(optionValue) {
   const newOption = document.querySelector(`[data-option="${optionValue}"]`);
   if (oldOption) oldOption.classList.remove('active');
   newOption.classList.add('active');
+}
+
+function showTagSettings(source) {
+  if (source === 'github') {
+    bgTagSlider.classList.add('hide');
+    inputTag.value = '';
+  } else {
+    bgTagSlider.classList.remove('hide');
+  }
 }
 
 function updateSettingsLang() {
@@ -486,6 +522,7 @@ function getUserSettings() {
 
   setLoacalization(state.language);
   setBgSource(state.bgSource);
+  showTagSettings(state.bgSource);
 }
 
 function toggleSettings() {
@@ -543,12 +580,20 @@ optionsArr.forEach(options => {
     }
 
     if (optionEl.closest('.custom-bg-toggle')) {
+      showTagSettings(optionEl.getAttribute('data-option'));
       setBgSource(optionEl.getAttribute('data-option'));
       setBg();
     }
 
     toggleOption(optionEl.getAttribute('data-option'));
   })
+})
+
+inputTag.addEventListener('change', () => {
+  tag = inputTag.value;
+  if(bgSource !== 'github') {
+    setBg();
+  }
 })
 
 
