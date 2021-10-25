@@ -1,4 +1,5 @@
 let userLanguage;
+let bgSource;
 const localization = {
   'en' : {
     'greeting' : {
@@ -146,6 +147,10 @@ const localization = {
   }
 }
 
+function setBgSource(source) {
+  bgSource = source;
+}
+
 function setLoacalization(lang) {
   userLanguage = lang;
 }
@@ -248,22 +253,54 @@ greetingName.addEventListener('change', function() {
 });
 
 //-----------------update bg image
+const apiFlickrKey = '1a2e3bbc4f21d2e9afc0d8c9dbeda606';
+
+const flickrGalleryIds = {
+  'night': '72157720062587146',
+  'morning': '72157720069530982',
+  'afternoon': '72157720111881805',
+  'evening': '72157720111880160'
+}
+
+async function getBgImgUrl(timeOfDay, bgNum, source) {
+  if (source === 'github') {
+    const githubUrl = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.padStart(2, '0')}.jpg`;
+    return githubUrl;
+  } else if (source === 'flickr') {
+    const flickrUrl = `https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=${apiFlickrKey}&gallery_id=${flickrGalleryIds[timeOfDay]}&format=json&nojsoncallback=1`;
+    const res = await fetch(flickrUrl);
+    const data = await res.json();
+    const galery = data['photos']['photo'];
+    const farmId = galery[bgNum]['farm'];
+    const serverId = galery[bgNum]['server'];
+    const id = galery[bgNum]['id'];
+    const secret = galery[bgNum]['secret'];
+    return `https://farm${farmId}.staticflickr.com/${serverId}/${id}_${secret}.jpg`;
+  } else {
+    
+  }
+}
+
+
 const body = document.body;
 let randomBGNum = getRandomNum(1, 20);
+
 
 function setBg() {
   const timeOfDay = getTimeOfDay();
   const bgNum = randomBGNum.toString();
   const img = new Image();
-  img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.padStart(2, '0')}.jpg`;
-  img.onload = () => {
-    body.style.backgroundImage = `url("${img.src}"`;
-  };
+  getBgImgUrl(timeOfDay, bgNum, bgSource).then(res => {
+    img.src = res;
+    console.log('imgsrc', img.src, bgSource);
+    img.onload = () => {
+      body.style.backgroundImage = `url("${img.src}"`;
+    };
+   });
 }
 
-setBg();
-
 //----------------slide bg
+
 const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
 
@@ -281,7 +318,7 @@ slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
 
 //-----------------weather
-const apiKey = 'dc9ee2d06a07955c9a79a313d609954f';
+const apiWeatherKey = 'dc9ee2d06a07955c9a79a313d609954f';
 
 const weatherBlock = document.querySelector('.weather');
 const weatherIcon = weatherBlock.querySelector('.weather-icon');
@@ -299,7 +336,7 @@ async function getWeather() {
     city.value = '';
   }
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&lang=${userLanguage}&appid=${apiKey}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&lang=${userLanguage}&appid=${apiWeatherKey}&units=metric`;
   const res = await fetch(url);
 
   try {
@@ -433,6 +470,7 @@ function getUserSettings() {
   toggleOption(state.bgSource);
 
   setLoacalization(state.language);
+  setBgSource(state.bgSource);
 }
 
 function toggleSettings() {
@@ -489,20 +527,22 @@ optionsArr.forEach(options => {
       updateLocaization(optionEl.parentNode.querySelector('.active').getAttribute('data-option'));
     }
 
+    if (optionEl.closest('.custom-bg-toggle')) {
+      setBgSource(optionEl.getAttribute('data-option'));
+      setBg();
+      // updateLocaization(optionEl.parentNode.querySelector('.active').getAttribute('data-option'));
+    }
+
     toggleOption(optionEl.getAttribute('data-option'));
   })
 })
-
-
-
-
-
 
 
 function init() {
   document.querySelectorAll('.none').forEach(el => {
     el.classList.remove('none');
   });
+  setBg();
   getWeather();
   updateMainContext();
   getQuotes();
