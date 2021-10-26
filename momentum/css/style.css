@@ -46,6 +46,13 @@ body {
   margin-bottom: 20px;
 }
 
+@media (max-width: 1024px) {
+  .player-info {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
 .player-controls {
   display: flex;
   align-items: center;
@@ -156,6 +163,29 @@ input[type="range"]::-webkit-slider-thumb {
   width: 65%;
 }
 
+@media (max-width: 1024px) {
+  .progress {
+    width: 100%;
+    order: 2;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress input::before {
+    display: none;
+  }
+
+  .duration-time {
+    align-self: center;
+  }
+}
+
 #progressRange {
   position: relative;
   width: 85%;
@@ -188,6 +218,21 @@ input[type="range"]::-webkit-slider-thumb {
   display: flex;
   align-items: center;
   width: 15%;
+}
+
+@media (max-width: 1024px) {
+  .volume {
+    width: 40%;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .volume {
+    width: 50%;
+    margin-left: 0;
+    margin-top: 15px;
+  }
 }
 
 .volume-icon {
@@ -377,6 +422,12 @@ input[type="range"]::-webkit-slider-thumb {
   background-image: url("../assets/svg/reload.svg");
 }
 
+@media (max-width:1024px) {
+  .quote-container {
+    margin-bottom: 40px;
+  }
+}
+
 .quote {
   min-height: 32px;
 }
@@ -402,6 +453,23 @@ input[type="range"]::-webkit-slider-thumb {
 
   .name {
     font-size: 32px;
+    padding: 5px;
+  }
+}
+
+@media (max-width:768) {
+  .time {
+    min-height: 80px;
+    font-size: 50px;
+  }
+
+  .greeting-container {
+    min-height: 40px;
+    font-size: 20px;
+  }
+
+  .name {
+    font-size: 20px;
     padding: 5px;
   }
 }
