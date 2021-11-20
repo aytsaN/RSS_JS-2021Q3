@@ -1,4 +1,15 @@
-.homescreen {
+body[data-page="home"] {
+  background-image: url("../assets/img/home-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .footer {
+    display: flex;
+  }
+}
+
+.homepage {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -6,20 +17,13 @@
   height: 100%;
   width: 100%;
   padding: 20px;
-}
 
-.settings {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  height: 34px;
-  width: 34px;
-  background-image: url("../assets/img/carbon_settings.png");
-  transition: .2s;
-  cursor: pointer;
-  opacity: .9;
-  &:hover {
-    opacity: .6;
+  .settings {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    height: 34px;
+    width: 34px;
   }
 }
 

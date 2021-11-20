@@ -1,0 +1,44 @@
+.navigation {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-around;
+  align-items: center;
+  height: 75px;
+  width: 100%;
+  background-color: $color-bg;
+  border: 1px solid $color-main-element;
+  border-radius: 15px 15px 0 0;
+  font-size: 1.2rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav {
+    display: block;
+    height: 28px;
+    width: 28px;
+    margin-bottom: 3px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .9;
+    transition: .1s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+
+  .home {
+    background-image: url('../assets/img/home-icon.png');
+  }
+
+  .categories {
+    background-image: url('../assets/img/category-icon.png');
+  }
+}

@@ -9,11 +9,13 @@
   opacity: .9;
   cursor: pointer;
   transition: .3s;
+
   &:hover {
     background-color: $color-main-element;
     color: $color-additional-element;
     opacity: .7;
   }
+  
   &:active {
     background-color: $color-theme;
     color: $color-additional-element;
