@@ -1,0 +1,35 @@
+.homescreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+.settings {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  height: 34px;
+  width: 34px;
+  background-image: url("../assets/img/carbon_settings.png");
+  transition: .2s;
+  cursor: pointer;
+  opacity: .9;
+  &:hover {
+    opacity: .6;
+  }
+}
+
+.home-logo {
+  margin-bottom: 30px;
+}
+
+.quiz-catrgories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 20%;
+}
