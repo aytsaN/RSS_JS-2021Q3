@@ -1,3 +1,5 @@
+import { NavigationMenu } from "./elements/NavigationMenu";
+import { HomePage } from "./pages/HomePage";
 import {
   ArtistsCategoriesPage,
   PicturesCategoriesPage
@@ -8,20 +10,20 @@ export class Navigation {
     this.main = main;
     this.storage = storage;
     this.categoriesName = categoriesName;
-    this.isHomePage = this.main.classList.contains('home-page');
   }
 
   goToCategories(quiz) {
-    if (this.isHomePage) {
-      this.main.classList.remove('home-page');
-    }
-
     if (quiz === 'artists') {
       const categoriesPage = new ArtistsCategoriesPage(this.main, quiz, this.storage.score[quiz], this.categoriesName);
     } else if (quiz === 'pictures') {
       const categoriesPage = new PicturesCategoriesPage(this.main, quiz, this.storage.score[quiz], this.categoriesName);
     }
 
-    console.log(this.storage.score[quiz]);
+    const navMenu = new NavigationMenu(this.main, this);
+  }
+
+  goToHome() {
+    console.log(this.main);
+    const homePage = new HomePage(this.main, this);
   }
 }

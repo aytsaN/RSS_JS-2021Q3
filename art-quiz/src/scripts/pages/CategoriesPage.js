@@ -16,7 +16,7 @@ class CategoriesPage {
     this.main.innerHTML = this.content;
 
     this.imgQuizData = [];
-    this.quizCategoriesData = [];
+    this.quizCategoriesData = {};
     this.questionsNum = 10;
   }
 
@@ -34,20 +34,22 @@ class CategoriesPage {
     const imagesData = new ImagesData(startImgNum, endImgNum);
     this.imgQuizData = await imagesData.getQuizData();
 
-    for (let i = 0; i < this.imgQuizData.length; i += this.questionsNum) {
-      this.quizCategoriesData.push(this.imgQuizData.slice(i, i + this.questionsNum));
+    for (let i = 0, count = 0; i < this.imgQuizData.length; i += this.questionsNum, count++) {
+      this.quizCategoriesData[this.categoriesName[count]] = [];
+      const array = this.quizCategoriesData[this.categoriesName[count]];
+      array.push(this.imgQuizData.slice(i, i + this.questionsNum));
     }
 
-    this.categoriesName.forEach((category, index) => {
+    this.categoriesName.forEach((category) => {
       const categoryScore = this.quizScore[category];
       let correctAnswersCount = categoryScore.length ?
         CategoriesPage.getCategoryScore(categoryScore) :
         null;
 
       const scoreElement = `<span class="score">${correctAnswersCount}/${this.questionsNum}</span>`;
-      const imgNum = this.quizCategoriesData[index][1]['imageNum'];
+      const imgNum = this.quizCategoriesData[category][0][1]['imageNum'];
       const imgPath = `./assets/quiz-image-data/square/${imgNum}.jpg`;
-      const categoryDiv = `<div class="categories-item ${correctAnswersCount === null ? '' : 'passed'}">
+      const categoryDiv = `<div class="categories-item ${correctAnswersCount === null ? '' : 'passed'}" data-category="${category}">
         <p class="category-title">${category} ${correctAnswersCount !== null ? scoreElement : ''}</p>
         <div class="category-img">
           <img src="${imgPath}" alt="category">
@@ -58,7 +60,6 @@ class CategoriesPage {
     })
 
     categoriesWrapper.innerHTML = template;
-    console.log('from cat', this.quizScore, this.quizCategoriesData);
   }
 }
 

@@ -16,7 +16,6 @@ export class QuizStorage {
   }
 
   static initScore(score, categories) {
-    console.log('!!!!!!!!!', score, categories)
     categories.forEach(categoryName => {
       score['artists'][categoryName] = [];
       score['pictures'][categoryName] = [];
@@ -25,7 +24,6 @@ export class QuizStorage {
   }
 
   getLocalStorage() {
-    console.log(this.categories);
     if (localStorage.getItem('score')) {
       this.score = QuizStorage.getFromStorage('score');
     }

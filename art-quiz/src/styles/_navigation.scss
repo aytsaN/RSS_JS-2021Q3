@@ -7,7 +7,7 @@
   height: 75px;
   width: 100%;
   background-color: $color-bg;
-  border: 1px solid $color-main-element;
+  border-top: 1px solid $color-main-element;
   border-radius: 15px 15px 0 0;
   font-size: 1.2rem;
 
@@ -17,7 +17,7 @@
     align-items: center;
   }
 
-  .nav {
+  .icon {
     display: block;
     height: 28px;
     width: 28px;
@@ -25,6 +25,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  div {
     opacity: .9;
     transition: .1s;
     cursor: pointer;
@@ -34,11 +37,19 @@
     }
   }
 
-  .home {
+  .active {
+    color: $color-theme;
+  }
+
+  .home .icon {
     background-image: url('../assets/img/home-icon.png');
   }
 
-  .categories {
+  .categories .icon {
     background-image: url('../assets/img/category-icon.png');
+  }
+
+  .settings .icon {
+    background-image: url('../assets/img/carbon_settings.png');
   }
 }

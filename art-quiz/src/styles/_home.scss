@@ -24,6 +24,17 @@ body[data-page="home"] {
     top: 20px;
     height: 34px;
     width: 34px;
+    background-image: url("../assets/img/carbon_settings.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: .2s;
+    cursor: pointer;
+    opacity: .9;
+
+    &:hover {
+      opacity: .6;
+    }
   }
 }
 

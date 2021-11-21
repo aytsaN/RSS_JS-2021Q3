@@ -3,7 +3,7 @@ export class ImagesData {
     this.startNum = startNum;
     this.endNum = endNum;
 
-    this.url = '../assets/json/en-images.json';
+    this.url = './assets/json/en-images.json';
   }
 
   async getQuizData() {
