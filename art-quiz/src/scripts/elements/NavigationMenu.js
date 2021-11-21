@@ -9,8 +9,7 @@ export class NavigationMenu {
       <div class="nav settings"><span class="icon"></span>Settings</div>`;
     this.main.after(this.element);
 
-    console.log(this.navigarion)
     this.homeBtn = this.element.querySelector('.home');
-    this.homeBtn.addEventListener('click', () => this.navigarion.goToHome());
+    this.homeBtn.addEventListener('click', () => this.navigarion.goToHome(this.element));
   }
 }

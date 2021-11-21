@@ -19,8 +19,19 @@ export class HomePage {
       this.categoryArtistBtn = this.main.querySelector('.artist-btn');
       this.categoryPicBtn = this.main.querySelector('.pic-btn');
 
-      this.categoryArtistBtn.addEventListener('click', (e) => {navigation.goToCategories(this.getQuizTheme(e.target))});
-      this.categoryPicBtn.addEventListener('click', (e) => {navigation.goToCategories(this.getQuizTheme(e.target))});
+      this.categoryArtistBtn.addEventListener('click', (e) => {
+        const tagert = e.target;
+        const theme = this.getQuizTheme(tagert);
+        navigation.appBg.classList.remove('home-bg');
+        navigation.goToCategories(theme);
+
+      });
+      this.categoryPicBtn.addEventListener('click', (e) => {
+        const tagert = e.target;
+        const theme = this.getQuizTheme(tagert);
+        navigation.appBg.classList.remove('home-bg');
+        navigation.goToCategories(theme);
+      });
   }
 
   getQuizTheme(btn) {

@@ -10,6 +10,13 @@
   border-top: 1px solid $color-main-element;
   border-radius: 15px 15px 0 0;
   font-size: 1.2rem;
+  animation-name: rise-nav;
+  animation-duration: .4s;
+
+  @keyframes rise-nav {
+    0%   {bottom: -75px;}
+    100% {bottom: 0px;}
+  }
 
   div {
     display: flex;

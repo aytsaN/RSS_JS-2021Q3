@@ -1,8 +1,9 @@
 import { ImagesData } from "../ImagesData";
 
 class CategoriesPage {
-  constructor(mainContainer, quiz, quizScore, categoriesName) {
+  constructor(mainContainer, quiz, quizScore, categoriesName, navigation) {
     this.main = mainContainer;
+    this.navigation = navigation;
     this.quiz = quiz;
     this.quizScore = quizScore;
     this.categoriesName = categoriesName;
@@ -60,12 +61,23 @@ class CategoriesPage {
     })
 
     categoriesWrapper.innerHTML = template;
+    categoriesWrapper.addEventListener('click', (e) => {
+      // console.log(e.target.className);
+      const item = e.target.closest('.categories-item');
+      if (item) {
+        const category = item.getAttribute('data-category');
+        console.log(category);
+      }
+
+    });
+
+
   }
 }
 
 class ArtistsCategoriesPage extends CategoriesPage{
-  constructor(mainContainer, quiz, quizScore, categoriesName) {
-    super(mainContainer, quiz, quizScore, categoriesName);
+  constructor(...args) {
+    super(...args);
     this.startImgNum = 0;
     this.endImgNum = 120;
     this.renderCategories(this.startImgNum, this.endImgNum);
@@ -73,8 +85,8 @@ class ArtistsCategoriesPage extends CategoriesPage{
 }
 
 class PicturesCategoriesPage extends CategoriesPage{
-  constructor(mainContainer, quiz, quizScore, categoriesName) {
-    super(mainContainer, quiz, quizScore, categoriesName);
+  constructor(...args) {
+    super(...args);
     this.startImgNum = 120;
     this.endImgNum = 240;
     this.renderCategories(this.startImgNum, this.endImgNum);

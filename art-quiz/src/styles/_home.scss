@@ -1,8 +1,4 @@
 body[data-page="home"] {
-  background-image: url("../assets/img/home-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 
   .footer {
     display: flex;
@@ -17,6 +13,7 @@ body[data-page="home"] {
   height: 100%;
   width: 100%;
   padding: 20px;
+  // z-index: 20;
 
   .settings {
     position: absolute;
@@ -28,7 +25,7 @@ body[data-page="home"] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: .2s;
+    transition: 2s;
     cursor: pointer;
     opacity: .9;
 
@@ -47,4 +44,15 @@ body[data-page="home"] {
   flex-direction: column;
   justify-content: space-around;
   height: 20%;
+}
+
+.app-bg {
+  background-image: url("../assets/img/home-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.app-bg.home-bg {
+  opacity: 1;
 }
