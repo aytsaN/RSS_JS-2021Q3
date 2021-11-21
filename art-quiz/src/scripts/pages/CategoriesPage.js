@@ -62,20 +62,16 @@ class CategoriesPage {
 
     categoriesWrapper.innerHTML = template;
     categoriesWrapper.addEventListener('click', (e) => {
-      // console.log(e.target.className);
       const item = e.target.closest('.categories-item');
       if (item) {
         const category = item.getAttribute('data-category');
-        console.log(category);
+        this.navigation.startQuiz(this.quiz, category, this.quizCategoriesData[category][0]);
       }
-
     });
-
-
   }
 }
 
-class ArtistsCategoriesPage extends CategoriesPage{
+class ArtistsCategoriesPage extends CategoriesPage {
   constructor(...args) {
     super(...args);
     this.startImgNum = 0;
@@ -84,7 +80,7 @@ class ArtistsCategoriesPage extends CategoriesPage{
   }
 }
 
-class PicturesCategoriesPage extends CategoriesPage{
+class PicturesCategoriesPage extends CategoriesPage {
   constructor(...args) {
     super(...args);
     this.startImgNum = 120;

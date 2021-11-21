@@ -6,22 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ART-QUIZ</title>
 </head>
-<body data-page="categories">
-  <div class="app-bg home-bg"></div>
+<body data-page="quiz">
+  <div class="app-bg"></div>
   <h1 class="main-heading">ART QUIZ</h1>
   <main class="main" id="main">
-    <!-- <section class="categories-main">
-      <img src="./assets/img/theme-logo.png" alt="logo" class="theme-logo" width="170" height="65">
-      <h2 class="page-title">Categories</h2>
-      <div class="categories-wrapper">
-        <div class="categories-item">
-          <p class="category-title">impressionism <span class="score">10/10</span></p>
-          <div class="category-img">
-            <img src="./assets/quiz-image-data/square/0.jpg" alt="category">
-          </div>
+    <section class="quiz-main">
+      <div class="control">
+        <span class="close-ico">&#10006;</span>
+        <progress class="time-progress" max="100" value="70"></progress>
+        <div class="timer">00:08</div>
+      </div>
+      <div class="qustion-inner">
+        <p class="question-text">Who is the author of this picture?</p>
+        <img src="./assets/quiz-image-data/square/10.jpg" alt="quiz-img" width="100%">
+        <div class="current-score">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="answers">
+          <button class="answers-btn btn">Peter Paul Rubens</button>
+          <button class="answers-btn btn">Peter Paul Rubens</button>
+          <button class="answers-btn btn">Peter Paul Rubens</button>
+          <button class="answers-btn btn">Peter Paul Rubens</button>
         </div>
       </div>
-    </section> -->
+    </section>
   </main>
 
   <footer class="footer" id="footer">

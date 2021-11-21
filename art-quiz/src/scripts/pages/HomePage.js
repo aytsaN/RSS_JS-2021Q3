@@ -12,12 +12,13 @@ export class HomePage {
       </section>`;
 
 //todo: delete comments
-      document.body.setAttribute('data-page', 'home');
-      this.main.innerHTML = this.content;
+// navigation.appBg.classList.add('home-bg');
+//       document.body.setAttribute('data-page', 'home');
+//       this.main.innerHTML = this.content;
 
-      this.settingsBtn = this.main.querySelector('settings');
-      this.categoryArtistBtn = this.main.querySelector('.artist-btn');
-      this.categoryPicBtn = this.main.querySelector('.pic-btn');
+//       this.settingsBtn = this.main.querySelector('settings');
+//       this.categoryArtistBtn = this.main.querySelector('.artist-btn');
+//       this.categoryPicBtn = this.main.querySelector('.pic-btn');
 
       this.categoryArtistBtn.addEventListener('click', (e) => {
         const tagert = e.target;
