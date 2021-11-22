@@ -41,5 +41,6 @@ export class Navigation {
     } else if (quizName === this.isPicturesQuiz) {
       quiz = new QuizPictures(this.main, quizName, category, quizData, this.storage.settings);
     }
+    quiz.startQuiz();
   }
 }

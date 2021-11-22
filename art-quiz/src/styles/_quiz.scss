@@ -12,12 +12,13 @@ body[data-page="quiz"] {
 }
 
 .quiz-main {
-
+  overflow: hidden;
 
   .control {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .close-ico {
       font-size: 2.4rem;
       cursor: pointer;
@@ -43,6 +44,14 @@ body[data-page="quiz"] {
 }
 
 .qustion-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  right: -120%;
+  display: none;
+  // animation-name: show-question;
+  // animation-duration: .5s;
 
   .question-text {
     margin: 5% 0;
@@ -85,4 +94,32 @@ body[data-page="quiz"] {
     margin-bottom: 3%;
     font-size: 1.6rem;
   }
+}
+
+.qustion-inner.show {
+  display: block;
+  animation-name: show-question;
+  animation-duration: .5s;
+  right: 0;
+}
+
+@keyframes show-question {
+  0% {
+    right: -120%;
+    transform: scale(0.4);
+  }
+  100% {
+    right: 0;
+    transform: scale(1);
+  }
+}
+
+.qustion-inner.hide {
+  animation-name: hide-question;
+  animation-duration: .5s;
+}
+
+@keyframes hide-question {
+  0%   {right: 0;}
+  100% {right: 120%;}
 }
