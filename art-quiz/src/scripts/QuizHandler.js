@@ -61,7 +61,7 @@ export class QuizHandler {
       QuizHandler._waitAnimation(card, () => {
         card.remove();
         navigation.removePopupBg();
-        quiz.proceedNext(answerStatus);
+        quiz.proceedNext(answerStatus, quiz);
       })
     });
   }

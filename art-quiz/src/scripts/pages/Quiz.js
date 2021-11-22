@@ -62,7 +62,7 @@ class Quiz {
     return answers;
   }
 
-  static showQCard(card, correctAnswer, currentQuestionData, navigation, quiz) {
+  static _showQCard(card, correctAnswer, currentQuestionData, navigation, quiz) {
     new QuizHandler(card, currentQuestionData, correctAnswer, navigation, quiz);
     card.classList.add('show');
   }
@@ -83,19 +83,20 @@ class Quiz {
     navigation.storage.updateLocalScore(result, quizName, quizCategoryName);
   }
 
-  proceedNext(answer) {
+  proceedNext(answer, quiz) {
+    const quizConstructor = quiz.constructor;
     this.result.push(answer);
     if (this.currentQuestionNum === this.lastQuestionNum) {
       Quiz._proceedToFinish(this.result, this.navigation, this.quizName, this.quizCategory);
     } else {
       this.qustionInner.classList.add('hide');
       this.currentQuestionNum++;
-      const answers = QuizArtists.prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
+      const answers = quizConstructor._prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
       QuizHandler._waitAnimation(this.qustionInner, () => {
         this.qustionInner.classList.remove('hide');
-        QuizArtists.renderAnswers(this.qustionInner, answers, this.currentQuestionData);
+        quizConstructor._renderAnswers(this.qustionInner, answers, this.currentQuestionData);
         Quiz._markScore(this.result, this.qustionInner);
-        QuizArtists.showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
+        Quiz._showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
       });
     }
   }
@@ -110,7 +111,7 @@ class QuizArtists extends Quiz {
     return this.currentQuestionData.author;
   }
 
-  static renderAnswers(qustionInner, answers, currentQuestionData) {
+  static _renderAnswers(qustionInner, answers, currentQuestionData) {
     const questionElement = `<p class="question-text">Who is the author of this picture?</p>
     <img src="./assets/quiz-image-data/square/${currentQuestionData.imageNum}.jpg" alt="quiz-img" width="100%">
     <div class="current-score">
@@ -121,7 +122,7 @@ class QuizArtists extends Quiz {
     qustionInner.innerHTML = questionElement;
   }
 
-  static prepareAnswers(currentQuestionData, quizData, currentQuestionNum) {
+  static _prepareAnswers(currentQuestionData, quizData, currentQuestionNum) {
     let answers = Quiz.getFourAnswers(currentQuestionData, quizData, currentQuestionNum, 'author');
     let answerElement = '';
 
@@ -134,9 +135,9 @@ class QuizArtists extends Quiz {
   }
 
   startQuiz() {
-    const answers = QuizArtists.prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
-    QuizArtists.renderAnswers(this.qustionInner, answers, this.currentQuestionData);
-    QuizArtists.showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
+    const answers = QuizArtists._prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
+    QuizArtists._renderAnswers(this.qustionInner, answers, this.currentQuestionData);
+    Quiz._showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
   }
 }
 
@@ -146,13 +147,38 @@ class QuizPictures extends Quiz {
   }
 
   get correctAnswer() {
-    return this.currentQuestionData.name;
+    return this.currentQuestionData.imageNum;
   }
 
   static renderQuestion() {
   }
 
+  static _renderAnswers(qustionInner, answers, currentQuestionData) {
+    const questionElement = `<p class="question-text">Which is ${currentQuestionData.author} picture?</p>
+    <div class="answers">${answers}</div>
+    <div class="current-score">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>`;
+
+    qustionInner.innerHTML = questionElement;
+  }
+
+  static _prepareAnswers(currentQuestionData, quizData, currentQuestionNum) {
+    let answers = Quiz.getFourAnswers(currentQuestionData, quizData, currentQuestionNum, 'imageNum');
+    let answerElement = '';
+
+    answers.forEach(num => {
+      const img = `<img src="../../assets/quiz-image-data/square/${num}.jpg" class="answers-img" data-answer="${num}"></img>`;
+      answerElement += img;
+    });
+
+    return answerElement;
+  }
+
   startQuiz() {
+    const answers = QuizPictures._prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
+    QuizPictures._renderAnswers(this.qustionInner, answers, this.currentQuestionData);
+    Quiz._showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
   }
 }
 
