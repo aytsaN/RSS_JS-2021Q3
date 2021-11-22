@@ -1,0 +1,5 @@
+export class QuizHandler {
+  constructor() {
+
+  }
+}

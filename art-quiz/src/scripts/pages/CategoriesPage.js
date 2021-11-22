@@ -65,7 +65,8 @@ class CategoriesPage {
       const item = e.target.closest('.categories-item');
       if (item) {
         const category = item.getAttribute('data-category');
-        this.navigation.startQuiz(this.quiz, category, this.quizCategoriesData[category][0]);
+        this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToQuiz.bind(this.navigation, this.quiz, category, this.quizCategoriesData[category][0]))
+        // this.navigation.goToQuiz(this.quiz, category, this.quizCategoriesData[category][0]);
       }
     });
   }

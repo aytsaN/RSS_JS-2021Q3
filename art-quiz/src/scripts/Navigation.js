@@ -15,32 +15,35 @@ export class Navigation {
     this.storage = storage;
     this.categoriesName = categoriesName;
     this.appBg = document.querySelector('.app-bg');
+    this.navMenu;
     this.isArtistsQuiz = 'artists';
     this.isPicturesQuiz = 'pictures';
   }
 
   goToCategories(quiz) {
     let categoriesPage;
+    this.navMenu = new NavigationMenu(this.main, this);
     if (quiz === this.isArtistsQuiz) {
       categoriesPage = new ArtistsCategoriesPage(this.main, quiz, this.storage.score[quiz], this.categoriesName, this);
     } else if (quiz === this.isPicturesQuiz) {
       categoriesPage = new PicturesCategoriesPage(this.main, quiz, this.storage.score[quiz], this.categoriesName, this);
     }
-
-    const navMenu = new NavigationMenu(this.main, this);
   }
 
   goToHome() {
+    console.log(this);
     new HomePage(this.main, this);
   }
 
-  startQuiz(quizName, category, quizData) {
+  goToQuiz(quizName, category, quizData) {
     let quiz;
     if (quizName === this.isArtistsQuiz) {
-      quiz = new QuizArtists(this.main, quizName, category, quizData, this.storage.settings);
+      quiz = new QuizArtists(this.main, quizName, category, quizData, this.storage.settings, this);
     } else if (quizName === this.isPicturesQuiz) {
-      quiz = new QuizPictures(this.main, quizName, category, quizData, this.storage.settings);
+      quiz = new QuizPictures(this.main, quizName, category, quizData, this.storage.settings, this);
     }
+    console.log('111111111111', this.navMenu)
+    // NavigationMenu.hideNavMenu(this.navMenu, quiz.startQuiz.bind(quiz));
     quiz.startQuiz();
   }
 }

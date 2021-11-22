@@ -12,7 +12,12 @@ export class NavigationMenu {
 
     this.homeBtn = this.element.querySelector('.home');
     this.homeBtn.addEventListener('click', () => {
-      const _this = this;
+      NavigationMenu._hideNavMenu(this, this.navigation.goToHome.bind(this.navigation));
+    });
+  }
+
+  static _hideNavMenu(_this, func) {
+    console.log('222222222222222', _this, func);
       _this.element.classList.add('hide');
 
       Promise.all(
@@ -23,10 +28,13 @@ export class NavigationMenu {
         )
       ).then(
         function() {
-          _this.navigation.goToHome();
+          if (func) func();
           return _this.element.remove();
         }
       );
-    });
+  }
+
+  hideNavMenu(_this, func) {
+    NavigationMenu._hideNavMenu(_this, func);
   }
 }
