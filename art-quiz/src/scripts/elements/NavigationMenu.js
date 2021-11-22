@@ -14,6 +14,9 @@ export class NavigationMenu {
     this.homeBtn.addEventListener('click', () => {
       NavigationMenu._hideNavMenu(this, this.navigation.goToHome.bind(this.navigation));
     });
+
+    this.settingsBtn = this.element.querySelector('.settings');
+    this.settingsBtn.addEventListener('click', () => navigation.openSettings());
   }
 
   static _hideNavMenu(_this, func) {

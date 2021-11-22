@@ -19,6 +19,7 @@ export class HomePage {
       this.settingsBtn = this.main.querySelector('settings');
       this.categoryArtistBtn = this.main.querySelector('.artist-btn');
       this.categoryPicBtn = this.main.querySelector('.pic-btn');
+      this.btnSettingsHome = this.main.querySelector('.settings');
 
       this.categoryArtistBtn.addEventListener('click', (e) => {
         const tagert = e.target;
@@ -33,6 +34,8 @@ export class HomePage {
         navigation.appBg.classList.remove('home-bg');
         navigation.goToCategories(theme);
       });
+
+      this.btnSettingsHome.addEventListener('click', () => {navigation.openSettings()});
   }
 
   getQuizTheme(btn) {

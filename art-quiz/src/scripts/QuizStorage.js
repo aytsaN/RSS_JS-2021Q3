@@ -6,7 +6,7 @@ export class QuizStorage {
       isTimer: true,
       timeToAnswer: 10,
       isMute: false,
-      volume: 10
+      volume: 1
     };
   }
 
@@ -30,7 +30,9 @@ export class QuizStorage {
     if (!this.score) QuizStorage.initScore({'artists': {},'pictures': {}}, this.categories);
 
     if (localStorage.getItem('settings')) {
+      console.log('STORAGE',this.settings);
       this.settings = QuizStorage.getFromStorage('settings');
+      console.log('STORAGE',this.settings);
     }
   }
 

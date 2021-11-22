@@ -8,11 +8,13 @@ import {
   QuizArtists,
   QuizPictures
 } from './pages/Quiz';
+import { Settings } from "./elements/Settings";
 
 export class Navigation {
-  constructor(main, storage, categoriesName) {
+  constructor(main, storage, categoriesName, audio) {
     this.main = main;
     this.storage = storage;
+    this.audio = audio;
     this.categoriesName = categoriesName;
     this.appBg = document.querySelector('.app-bg');
     this.navMenu;
@@ -65,5 +67,10 @@ export class Navigation {
     // Navigation._addQuizBg(this.appBg);
     // NavigationMenu.hideNavMenu(this.navMenu, quiz.startQuiz.bind(quiz));
     quiz.startQuiz();
+  }
+
+  openSettings() {
+
+    const settings = new Settings(this.main, this.storage, this);
   }
 }

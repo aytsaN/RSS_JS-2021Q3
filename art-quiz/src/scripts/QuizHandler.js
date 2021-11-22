@@ -4,13 +4,12 @@ export class QuizHandler {
     this.correctAnswer = correctAnswer;
     this.correctAnswerData = correctAnswerData;
     this.answersWrapper = this.card.querySelector('.answers');
-    console.log(this.correctAnswer)
     this.answersWrapper.addEventListener('click', (e) => {
       const item = e.target.closest('[data-answer]');
       if (item) {
         const userChoice = item.getAttribute('data-answer');
 
-        QuizHandler.processUserResopnce(userChoice, this.correctAnswer, this.correctAnswerData, navigation, quiz);
+        QuizHandler.processUserResopnce(userChoice, this.correctAnswer, this.correctAnswerData, navigation, quiz, this.audio);
       }
     });
   }
@@ -53,6 +52,8 @@ export class QuizHandler {
     card.innerHTML = this.element;
     navigation.addPopupBg();
     navigation.main.append(card);
+    navigation.audio.playSound(answerStatus);
+
 
     const btnNext = card.querySelector('.next-btn');
     QuizHandler._waitAnimation(card, () => {card.classList.remove('show')});
@@ -99,6 +100,7 @@ export class QuizHandler {
     card.innerHTML = this.element;
     navigation.addPopupBg();
     navigation.main.append(card);
+    navigation.audio.playSound('end');
     QuizHandler._waitAnimation(card, () => {card.classList.remove('show')});
 
     const btnHome = card.querySelector('.home-btn');
