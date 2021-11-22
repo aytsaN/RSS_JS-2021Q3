@@ -17,7 +17,6 @@ export class NavigationMenu {
   }
 
   static _hideNavMenu(_this, func) {
-    console.log('222222222222222', _this, func);
       _this.element.classList.add('hide');
 
       Promise.all(

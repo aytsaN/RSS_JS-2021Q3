@@ -42,7 +42,6 @@ export class Navigation {
     } else if (quizName === this.isPicturesQuiz) {
       quiz = new QuizPictures(this.main, quizName, category, quizData, this.storage.settings, this);
     }
-    console.log('111111111111', this.navMenu)
     // NavigationMenu.hideNavMenu(this.navMenu, quiz.startQuiz.bind(quiz));
     quiz.startQuiz();
   }

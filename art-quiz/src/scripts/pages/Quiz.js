@@ -43,11 +43,10 @@ class Quiz {
   }
 
   static getFourAnswers(currentQuestionData, quizData, currentQuestionNum, targetProp) {
-    console.log(quizData);
     let answers = [];
-    let copyArr = quizData;
+    let copyArr = [...quizData];
     copyArr.splice(currentQuestionNum, 1);
-    copyArr = Quiz.shuffle(quizData);
+    copyArr = Quiz.shuffle(copyArr);
     copyArr.forEach(el => {
       answers.push(el[targetProp]);
     })
@@ -67,7 +66,6 @@ class Quiz {
 class QuizArtists extends Quiz {
   constructor(...args) {
     super(...args);
-    console.log('1',this.quizName, this.quizCategory,this.quizData, this.gameSettings, this.currentQuestionData);
   }
 
   get correctAnswer() {
@@ -88,9 +86,6 @@ class QuizArtists extends Quiz {
   static prepareAnswers(currentQuestionData, quizData, currentQuestionNum) {
     let answers = Quiz.getFourAnswers(currentQuestionData, quizData, currentQuestionNum, 'author');
     let answerElement = '';
-    console.log(currentQuestionData);
-
-    console.log(answers);
 
     answers.forEach(el => {
       const button = `<button class="answers-btn btn" data-answer="${el}">${el}</button>`;
@@ -101,7 +96,6 @@ class QuizArtists extends Quiz {
   }
 
   startQuiz() {
-    console.log(this.quizData);
     const answers = QuizArtists.prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
     QuizArtists.renderAnswers(this.qustionInner, answers, this.currentQuestionData);
     QuizArtists.showQCard(this.qustionInner);
@@ -111,7 +105,6 @@ class QuizArtists extends Quiz {
 class QuizPictures extends Quiz {
   constructor(...args) {
     super(...args);
-    console.log('22',this.quizName, this.quizCategory,this.quizData, this.gameSettings);
   }
 
   get correctAnswer() {
