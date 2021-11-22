@@ -20,6 +20,10 @@ export class Navigation {
     this.isPicturesQuiz = 'pictures';
   }
 
+  addPopupBg() {
+    this.appBg.classList.add('popup-bg');
+  }
+
   goToCategories(quiz) {
     let categoriesPage;
     this.navMenu = new NavigationMenu(this.main, this);

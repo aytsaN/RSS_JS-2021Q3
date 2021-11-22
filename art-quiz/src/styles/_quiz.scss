@@ -1,10 +1,13 @@
 body[data-page="quiz"] {
+  overflow: hidden;
 
   .footer {
     display: flex;
   }
 
   .main {
+    display: flex;
+    justify-content: center;
     min-height: 90vh;
     height: 100%;
     margin: 0 auto;
@@ -50,11 +53,9 @@ body[data-page="quiz"] {
   position: relative;
   right: -120%;
   display: none;
-  // animation-name: show-question;
-  // animation-duration: .5s;
 
   .question-text {
-    margin: 5% 0;
+    margin: 3% 0;
     font-size: 2.2rem;
     text-align: center;
   }

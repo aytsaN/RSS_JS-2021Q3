@@ -1,3 +1,5 @@
+import { QuizHandler } from "../QuizHandler";
+
 class Quiz {
   constructor(main, quizName, quizCategory, quizData, gameSettings, navigation) {
     this.main = main;
@@ -58,7 +60,8 @@ class Quiz {
     return answers;
   }
 
-  static showQCard(card) {
+  static showQCard(card, correctAnswer, currentQuestionData, navigation) {
+    new QuizHandler(card, currentQuestionData, correctAnswer, navigation);
     card.classList.add('show');
   }
 }
@@ -98,7 +101,7 @@ class QuizArtists extends Quiz {
   startQuiz() {
     const answers = QuizArtists.prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
     QuizArtists.renderAnswers(this.qustionInner, answers, this.currentQuestionData);
-    QuizArtists.showQCard(this.qustionInner);
+    QuizArtists.showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation);
   }
 }
 

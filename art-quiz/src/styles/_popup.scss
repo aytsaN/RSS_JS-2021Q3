@@ -1,0 +1,37 @@
+.app-bg.popup-bg {
+  position: absolute;
+  top:0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  opacity: .6;
+  z-index: 15;
+}
+
+.popup {
+  position: absolute;
+  bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  padding: 5%;
+  color: #000;
+
+  background-color: $color-main-element;
+  border-radius: 15px;
+  z-index: 20;
+
+  .next-btn {
+    height: 45px;
+    width: 85%;
+    background-color: $color-theme;
+    border-color: $color-theme;
+    color: #000;
+    font-size: 1.4rem;
+
+    &:hover {
+      border-color: #000;
+    }
+  }
+}

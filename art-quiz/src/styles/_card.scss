@@ -1,0 +1,58 @@
+.card-answer {
+  img {
+    border-radius: 15px;
+  }
+
+  .pic-name {
+    margin-top: 20px;
+    font-size: 1.8rem;
+  }
+
+  .pic-info {
+    font-size: 1.4rem;
+    margin: 7px 0 20px;
+  }
+
+  .img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .status {
+    display: none;
+    position: absolute;
+    bottom: 5%;
+    left: 7%;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 3rem;
+    color: #000;
+
+    &.correct {
+      background-color: #3DDA69;
+    }
+
+    &.wrong {
+      background-color: #FF7E7E;
+    }
+
+    &.show {
+      display: flex;
+    }
+  }
+}
+
+.card-answer.show {
+  animation-name: show-card;
+  animation-duration: .2s;
+}
+
+@keyframes show-card {
+  0%   {bottom: -100vh;}
+  100% {bottom: 5vh;}
+}
