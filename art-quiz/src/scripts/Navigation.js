@@ -22,10 +22,6 @@ export class Navigation {
     this.isPicturesQuiz = 'pictures';
   }
 
-  // static _addQuizBg(appBg) {
-  //   appBg.classList.add('quiz-bg');
-  // }
-
   addPopupBg() {
     this.appBg.classList.add('popup-bg');
   }
@@ -33,14 +29,6 @@ export class Navigation {
   removePopupBg() {
     this.appBg.classList.remove('popup-bg');
   }
-
-  // addQuizBg() {
-  //   Navigation._addQuizBg(this.appBg);
-  // }
-
-  // removeQuizBg() {
-  //   this.appBg.classList.remove('quiz-bg');
-  // }
 
   goToCategories(quiz) {
     let categoriesPage;
@@ -64,13 +52,10 @@ export class Navigation {
     } else if (quizName === this.isPicturesQuiz) {
       quiz = new QuizPictures(this.main, quizName, category, quizData, this.storage.settings, this);
     }
-    // Navigation._addQuizBg(this.appBg);
-    // NavigationMenu.hideNavMenu(this.navMenu, quiz.startQuiz.bind(quiz));
     quiz.startQuiz();
   }
 
   openSettings() {
-
     const settings = new Settings(this.main, this.storage, this);
   }
 }

@@ -8,25 +8,30 @@ class Quiz {
     this.quizData = quizData;
     this.gameSettings = gameSettings;
     this.navigation = navigation;
+    this.isTimer = this.navigation.storage.settings.isTimer;
+    this.timeToAnswer = navigation.storage.settings.timeToAnswer;
 
     this.currentQuestionNum = 0;
     this.lastQuestionNum = 9;
     this.result = [];
 
+
+    const timerElement = `<progress class="time-progress" max="100" value="70"></progress><div class="timer">00:${this.timeToAnswer}</div>`;
     document.body.setAttribute('data-page', 'quiz');
     this.content = `<section class="quiz-main">
       <div class="control">
         <span class="close-ico">&#10006;</span>
-        <progress class="time-progress" max="100" value="70"></progress>
-        <div class="timer">00:08</div>
+        ${this.isTimer == 'true' ? timerElement : ''}
       </div>
       <div class="qustion-inner"></div>
     </section>`;
     this.main.innerHTML = this.content;
 
     this.closeQuiz = this.main.querySelector('.quiz-main .close-ico');
-    this.closeQuiz.addEventListener('click', () => {navigation.goToCategories(this.quizName)});
-
+    this.closeQuiz.addEventListener('click', () => {
+      QuizHandler.responseReceived = true;
+      navigation.goToCategories(this.quizName)
+    });
     this.qustionInner = this.main.querySelector('.qustion-inner');
   }
 
@@ -63,8 +68,13 @@ class Quiz {
   }
 
   static _showQCard(card, correctAnswer, currentQuestionData, navigation, quiz) {
-    new QuizHandler(card, currentQuestionData, correctAnswer, navigation, quiz);
+    console.log(quiz.isTimer);
+    const handler = new QuizHandler(card, currentQuestionData, correctAnswer, navigation, quiz);
     card.classList.add('show');
+    QuizHandler._waitAnimation(card, () => {
+      if (quiz.isTimer == 'true')
+      handler.createTimer(quiz.timeToAnswer, quiz.main, quiz);
+    });
   }
 
   static _markScore(results, div) {

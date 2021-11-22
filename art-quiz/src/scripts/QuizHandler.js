@@ -1,6 +1,8 @@
 export class QuizHandler {
   constructor(card, correctAnswerData, correctAnswer, navigation, quiz) {
     this.card = card;
+    this.navigation = navigation;
+    this.quiz = quiz;
     this.correctAnswer = correctAnswer;
     this.correctAnswerData = correctAnswerData;
     this.answersWrapper = this.card.querySelector('.answers');
@@ -8,13 +10,16 @@ export class QuizHandler {
       const item = e.target.closest('[data-answer]');
       if (item) {
         const userChoice = item.getAttribute('data-answer');
-
-        QuizHandler.processUserResopnce(userChoice, this.correctAnswer, this.correctAnswerData, navigation, quiz, this.audio);
+        console.log('12312', this.responseReceived);
+        QuizHandler.processUserResopnce(userChoice, this.correctAnswer, this.correctAnswerData, navigation, quiz);
       }
     });
   }
 
+  static responseReceived = false;
+
   static processUserResopnce(userChoice, correctAnswer, correctAnswerData, navigation, quiz) {
+    QuizHandler.responseReceived = true;
     let answerStatus;
     console.log(correctAnswerData);
     if (!userChoice);
@@ -68,8 +73,6 @@ export class QuizHandler {
   }
 
   static _waitAnimation(el, func) {
-    // func();
-
     Promise.all(
       el.getAnimations().map(
         function(animation) {
@@ -79,7 +82,6 @@ export class QuizHandler {
     ).then(
       function() {
         if (func) func();
-        // return el.remove();
       }
     );
   }
@@ -122,5 +124,26 @@ export class QuizHandler {
         navigation.goToCategories(quizName);
       })
     });
+  }
+
+  createTimer(time, main) {
+    const timerEl = main.querySelector('.timer');
+    console.log(timerEl, time)
+    const parms = [null, this.correctAnswer, this.correctAnswerData, this.navigation, this.quiz];
+    QuizHandler.responseReceived = false;
+    QuizHandler._updateTimer(time, timerEl, parms);
+  }
+
+  static _updateTimer(time, timerEl, parms) {
+    console.log(time, timerEl)
+    if (time > 0 && !QuizHandler.responseReceived) {
+      timerEl.textContent = `00:${time > 9 ? '' : '0'}${time}`;
+      setTimeout(() => QuizHandler._updateTimer(time - 1, timerEl, parms), 1000);
+    } else if (time === 0) {
+      timerEl.textContent = `00:00`;
+      console.log(parms);
+      console.log(...parms);
+      QuizHandler.processUserResopnce(...parms);
+    }
   }
 }
