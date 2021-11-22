@@ -10,6 +10,8 @@ class Quiz {
     this.navigation = navigation;
 
     this.currentQuestionNum = 0;
+    this.lastQuestionNum = 9;
+    this.result = [];
 
     document.body.setAttribute('data-page', 'quiz');
     this.content = `<section class="quiz-main">
@@ -60,9 +62,42 @@ class Quiz {
     return answers;
   }
 
-  static showQCard(card, correctAnswer, currentQuestionData, navigation) {
-    new QuizHandler(card, currentQuestionData, correctAnswer, navigation);
+  static showQCard(card, correctAnswer, currentQuestionData, navigation, quiz) {
+    new QuizHandler(card, currentQuestionData, correctAnswer, navigation, quiz);
     card.classList.add('show');
+  }
+
+  static _markScore(results, div) {
+    const scoreDots = div.querySelectorAll('.current-score span');
+    results.forEach((value, index) => {
+      scoreDots[index].classList.add(value);
+    });
+  }
+
+  static _proceedToFinish(result, navigation, quizName, quizCategoryName) {
+    let correctNum = 0;
+    result.forEach(value => {
+      if (value == 'correct') correctNum++;
+    })
+    QuizHandler._showEndPopup(correctNum, result, navigation, quizName);
+    navigation.storage.updateLocalScore(result, quizName, quizCategoryName);
+  }
+
+  proceedNext(answer) {
+    this.result.push(answer);
+    if (this.currentQuestionNum === this.lastQuestionNum) {
+      Quiz._proceedToFinish(this.result, this.navigation, this.quizName, this.quizCategory);
+    } else {
+      this.qustionInner.classList.add('hide');
+      this.currentQuestionNum++;
+      const answers = QuizArtists.prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
+      QuizHandler._waitAnimation(this.qustionInner, () => {
+        this.qustionInner.classList.remove('hide');
+        QuizArtists.renderAnswers(this.qustionInner, answers, this.currentQuestionData);
+        Quiz._markScore(this.result, this.qustionInner);
+        QuizArtists.showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
+      });
+    }
   }
 }
 
@@ -101,7 +136,7 @@ class QuizArtists extends Quiz {
   startQuiz() {
     const answers = QuizArtists.prepareAnswers(this.currentQuestionData, this.quizData, this.currentQuestionNum);
     QuizArtists.renderAnswers(this.qustionInner, answers, this.currentQuestionData);
-    QuizArtists.showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation);
+    QuizArtists.showQCard(this.qustionInner, this.correctAnswer,  this.currentQuestionData, this.navigation, this);
   }
 }
 

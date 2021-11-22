@@ -1,0 +1,40 @@
+.end-card {
+  height: 70%;
+
+  .score {
+    font-size: 4.8rem;
+    font: $font-bold;
+  }
+}
+
+.end-img {
+  width: 65%;
+  height: 60%;
+  background-image: url("../assets/img/end-popup.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.end-text {
+  font-size: 2.2rem;
+}
+
+.end-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+
+  .btn {
+    width: 45%;
+  }
+
+  .home-btn {
+    border: 1px solid #000;
+
+    &:hover {
+      background-color: rgb(219, 219, 219);
+    }
+  }
+}

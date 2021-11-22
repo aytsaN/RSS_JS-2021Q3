@@ -54,4 +54,5 @@ body[data-page="home"] {
 
 .app-bg.home-bg {
   opacity: 1;
+  transition: opacity .5s ease-in-out;
 }

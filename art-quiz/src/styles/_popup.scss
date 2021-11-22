@@ -22,16 +22,39 @@
   border-radius: 15px;
   z-index: 20;
 
-  .next-btn {
+  .btn {
     height: 45px;
-    width: 85%;
-    background-color: $color-theme;
-    border-color: $color-theme;
     color: #000;
     font-size: 1.4rem;
 
-    &:hover {
-      border-color: #000;
+    &.next-btn {
+      background-color: $color-theme;
+      border-color: $color-theme;
+
+      &:hover {
+        border-color: #000;
+      }
     }
   }
 }
+
+.popup.show {
+  animation-name: show-card;
+  animation-duration: .2s;
+}
+
+@keyframes show-card {
+  0%   {bottom: -100vh;}
+  100% {bottom: 5vh;}
+}
+
+.popup.hide {
+  animation-name: hide-card;
+  animation-duration: .2s;
+}
+
+@keyframes hide-card {
+  0%   {bottom: 5vh;}
+  100% {bottom: -100vh;}
+}
+

@@ -1,6 +1,10 @@
 body[data-page="quiz"] {
   overflow: hidden;
 
+  .quiz-bg {
+    background-color: $color-bg;
+  }
+
   .footer {
     display: flex;
   }
@@ -13,6 +17,7 @@ body[data-page="quiz"] {
     margin: 0 auto;
   }
 }
+
 
 .quiz-main {
   overflow: hidden;
@@ -79,6 +84,14 @@ body[data-page="quiz"] {
       border: 1px solid $color-main-element;
       border-radius: 50%;
       opacity: .8;
+
+      &.correct {
+        background-color: $color-correct;
+      }
+
+      &.wrong {
+        background-color: $color-wrong;
+      }
     }
   }
 
@@ -100,7 +113,7 @@ body[data-page="quiz"] {
 .qustion-inner.show {
   display: block;
   animation-name: show-question;
-  animation-duration: .5s;
+  animation-duration: .6s;
   right: 0;
 }
 
@@ -117,7 +130,7 @@ body[data-page="quiz"] {
 
 .qustion-inner.hide {
   animation-name: hide-question;
-  animation-duration: .5s;
+  animation-duration: .3s;
 }
 
 @keyframes hide-question {

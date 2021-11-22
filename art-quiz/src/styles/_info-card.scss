@@ -6,6 +6,7 @@
   .pic-name {
     margin-top: 20px;
     font-size: 1.8rem;
+    text-align: center;
   }
 
   .pic-info {
@@ -28,31 +29,24 @@
     align-items: center;
     width: 5rem;
     height: 5rem;
-    background-color: red;
     border-radius: 50%;
     font-size: 3rem;
     color: #000;
 
     &.correct {
-      background-color: #3DDA69;
+      background-color: $color-correct;
     }
 
     &.wrong {
-      background-color: #FF7E7E;
+      background-color: $color-wrong;
     }
 
     &.show {
       display: flex;
     }
   }
-}
 
-.card-answer.show {
-  animation-name: show-card;
-  animation-duration: .2s;
-}
-
-@keyframes show-card {
-  0%   {bottom: -100vh;}
-  100% {bottom: 5vh;}
+  .btn {
+    width: 85%;
+  }
 }

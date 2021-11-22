@@ -40,4 +40,12 @@ export class QuizStorage {
     localStorage.setItem('score', dataScore);
     localStorage.setItem('settings', dataSettings);
   }
+
+  updateLocalScore(resultValue, quizName, quizCategoryName) {
+    this.score[quizName][quizCategoryName] = resultValue;
+    console.log('++++++++++++++++++++++++', resultValue, quizName, quizCategoryName);
+    console.log(this.score[quizName][quizCategoryName]);
+    console.log(this.score);
+
+  }
 }

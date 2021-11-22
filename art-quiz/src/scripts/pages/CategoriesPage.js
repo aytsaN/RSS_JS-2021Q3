@@ -26,7 +26,7 @@ class CategoriesPage {
     answers.forEach((answer) => {
       counts[answer] = (counts[answer] || 0) + 1;
     });
-    return counts.correct;
+    return counts.correct || 0;
   }
 
   async renderCategories(startImgNum, endImgNum) {
