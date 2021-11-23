@@ -78,6 +78,8 @@ body[data-page="categories"] {
   position: relative;
   width: 40vw;
   height: 40vw;
+  max-width: 260px;
+  max-height: 260px;
   margin: 0 auto;
 
   img {
@@ -109,9 +111,3 @@ body[data-page="categories"] {
     font-size: 1.6rem;
   }
 }
-
-// .passed .category-img {
-//   &::after {
-
-//   }
-// }

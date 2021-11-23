@@ -30,9 +30,7 @@ export class QuizStorage {
     if (!this.score) QuizStorage.initScore({'artists': {},'pictures': {}}, this.categories);
 
     if (localStorage.getItem('settings')) {
-      console.log('STORAGE',this.settings);
       this.settings = QuizStorage.getFromStorage('settings');
-      console.log('STORAGE',this.settings);
     }
   }
 
@@ -45,9 +43,5 @@ export class QuizStorage {
 
   updateLocalScore(resultValue, quizName, quizCategoryName) {
     this.score[quizName][quizCategoryName] = resultValue;
-    console.log('++++++++++++++++++++++++', resultValue, quizName, quizCategoryName);
-    console.log(this.score[quizName][quizCategoryName]);
-    console.log(this.score);
-
   }
 }

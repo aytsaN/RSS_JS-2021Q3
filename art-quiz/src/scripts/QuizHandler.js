@@ -10,7 +10,6 @@ export class QuizHandler {
       const item = e.target.closest('[data-answer]');
       if (item) {
         const userChoice = item.getAttribute('data-answer');
-        console.log('12312', this.responseReceived);
         QuizHandler.processUserResopnce(userChoice, this.correctAnswer, this.correctAnswerData, navigation, quiz);
       }
     });
@@ -21,7 +20,6 @@ export class QuizHandler {
   static processUserResopnce(userChoice, correctAnswer, correctAnswerData, navigation, quiz) {
     QuizHandler.responseReceived = true;
     let answerStatus;
-    console.log(correctAnswerData);
     if (!userChoice);
     if (userChoice === correctAnswer) {
       answerStatus = 'correct';
@@ -32,7 +30,6 @@ export class QuizHandler {
   }
 
   static renderCorrectAnswer(answerStatus, correctAnswerData, navigation, quiz) {
-    console.log(quiz);
     const imgNum = correctAnswerData.imageNum;
     const name = correctAnswerData.name;
     const author = correctAnswerData.author;
@@ -128,21 +125,17 @@ export class QuizHandler {
 
   createTimer(time, main) {
     const timerEl = main.querySelector('.timer');
-    console.log(timerEl, time)
     const parms = [null, this.correctAnswer, this.correctAnswerData, this.navigation, this.quiz];
     QuizHandler.responseReceived = false;
     QuizHandler._updateTimer(time, timerEl, parms);
   }
 
   static _updateTimer(time, timerEl, parms) {
-    console.log(time, timerEl)
     if (time > 0 && !QuizHandler.responseReceived) {
       timerEl.textContent = `00:${time > 9 ? '' : '0'}${time}`;
       setTimeout(() => QuizHandler._updateTimer(time - 1, timerEl, parms), 1000);
     } else if (time === 0) {
       timerEl.textContent = `00:00`;
-      console.log(parms);
-      console.log(...parms);
       QuizHandler.processUserResopnce(...parms);
     }
   }

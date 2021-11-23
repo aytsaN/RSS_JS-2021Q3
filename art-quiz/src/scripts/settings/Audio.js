@@ -7,7 +7,6 @@ export class AudioHandler {
     const volume = this.storage.settings.volume;
     const url = `./assets/audio/${status}.mp3`;
     const audio = new Audio(url);
-    console.log();
     audio.volume = volume;
     audio.play();
   }

@@ -22,7 +22,7 @@ export class ScorePage {
     this.content = `<section class="score-main">
       <header class="score-hdr hdr">
         <span class="back"><</span>
-        <h3 class="title">Portrait category</h3>
+        <h3 class="title">Categories</h3>
       </header>
       <div class="score-tiles tiles">
         ${cards}
@@ -35,7 +35,6 @@ export class ScorePage {
     this.scoreContainer.addEventListener('click', (e) => {
 
       const target = e.target.closest('.score-item')
-      console.log('here', e.target.closest('.score-item'), target);
       if (target) {
         target.classList.toggle('is-flipped');
       }

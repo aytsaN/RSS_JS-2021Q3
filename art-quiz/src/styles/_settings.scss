@@ -124,3 +124,29 @@
     margin: 0;
   }
 }
+
+@media (min-width: 520px) {
+  .settings-section {
+    margin-top: 10%;
+
+
+  }
+
+  .settings-window {
+    .timer .input-time-container .btn {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .settings-section {
+    margin-top: 68px;
+    margin-bottom: 10px;
+
+    .title {
+      margin-bottom: 60px;
+    }
+  }
+}

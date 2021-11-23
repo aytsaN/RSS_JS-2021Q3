@@ -68,7 +68,6 @@ class Quiz {
   }
 
   static _showQCard(card, correctAnswer, currentQuestionData, navigation, quiz) {
-    console.log(quiz.isTimer);
     const handler = new QuizHandler(card, currentQuestionData, correctAnswer, navigation, quiz);
     card.classList.add('show');
     QuizHandler._waitAnimation(card, () => {

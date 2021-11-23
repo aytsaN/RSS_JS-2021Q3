@@ -42,7 +42,6 @@ export class Navigation {
   }
 
   goToHome() {
-    console.log(this);
     new HomePage(this.main, this);
   }
 
@@ -62,6 +61,5 @@ export class Navigation {
 
   goToScore(quizName, category, categoryData) {
     const score = new ScorePage(quizName, category, this.storage.score[quizName][category], categoryData, this.main, this);
-    console.log(quizName, category, this.storage.score[quizName][category], categoryData);
   }
 }

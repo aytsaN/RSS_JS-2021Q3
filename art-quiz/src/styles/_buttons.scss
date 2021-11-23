@@ -21,3 +21,10 @@
     color: $color-additional-element;
   }
 }
+
+@media (min-width: 768px)  {
+  .btn {
+    width: 600px;
+    height: 70px;
+  }
+}
