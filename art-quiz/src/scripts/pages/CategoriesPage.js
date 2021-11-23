@@ -55,6 +55,7 @@ class CategoriesPage {
         <p class="category-title">${category} ${correctAnswersCount !== null ? scoreElement : ''}</p>
         <div class="category-img">
           <img src="${imgPath}" alt="category">
+          <div class="again">Play again</div>
         </div>
       </div>`;
 
@@ -64,9 +65,14 @@ class CategoriesPage {
     categoriesWrapper.innerHTML = template;
     categoriesWrapper.addEventListener('click', (e) => {
       const item = e.target.closest('.categories-item');
+      const playAgain = e.target.closest('.again');
+      if (playAgain) {
+        const category = item.getAttribute('data-category');
+        this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToQuiz.bind(this.navigation, this.quiz, category, this.quizCategoriesData[category][0]));
+      }
       if (item) {
         const category = item.getAttribute('data-category');
-        if (item.classList.contains('passed')) {
+        if (item.classList.contains('passed') && !playAgain) {
           this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToScore(this.quiz, category, this.quizCategoriesData[category][0]));
         } else {
           this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToQuiz.bind(this.navigation, this.quiz, category, this.quizCategoriesData[category][0]));
