@@ -66,8 +66,11 @@ class CategoriesPage {
       const item = e.target.closest('.categories-item');
       if (item) {
         const category = item.getAttribute('data-category');
-        this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToQuiz.bind(this.navigation, this.quiz, category, this.quizCategoriesData[category][0]))
-        // this.navigation.goToQuiz(this.quiz, category, this.quizCategoriesData[category][0]);
+        if (item.classList.contains('passed')) {
+          this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToScore(this.quiz, category, this.quizCategoriesData[category][0]));
+        } else {
+          this.navigation.navMenu.hideNavMenu(this.navigation.navMenu, this.navigation.goToQuiz.bind(this.navigation, this.quiz, category, this.quizCategoriesData[category][0]));
+        }
       }
     });
   }

@@ -4,7 +4,7 @@ export class Settings {
 
     const settingsWindow = document.createElement('div');
     settingsWindow.classList.add('settings-window', 'show');
-    this.element = `<header class="settings-hdr">
+    this.element = `<header class="settings-hdr hdr">
         <span class="back"><</span>
         <h3 class="title">Settings</h3>
       </header>

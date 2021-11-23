@@ -9,6 +9,7 @@ import {
   QuizPictures
 } from './pages/Quiz';
 import { Settings } from "./elements/Settings";
+import { ScorePage } from "./pages/ScorePage";
 
 export class Navigation {
   constructor(main, storage, categoriesName, audio) {
@@ -57,5 +58,10 @@ export class Navigation {
 
   openSettings() {
     const settings = new Settings(this.main, this.storage, this);
+  }
+
+  goToScore(quizName, category, categoryData) {
+    const score = new ScorePage(quizName, category, this.storage.score[quizName][category], categoryData, this.main, this);
+    console.log(quizName, category, this.storage.score[quizName][category], categoryData);
   }
 }

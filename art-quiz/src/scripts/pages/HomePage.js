@@ -11,7 +11,6 @@ export class HomePage {
         </div>
       </section>`;
 
-//todo: delete comments
       navigation.appBg.classList.add('home-bg');
       document.body.setAttribute('data-page', 'home');
       this.main.innerHTML = this.content;
